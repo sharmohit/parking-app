@@ -8,7 +8,6 @@
 import UIKit
 
 class SignUpViewController: UIViewController {
-    
 
     @IBOutlet weak var etName: UITextField!
     @IBOutlet weak var etEmail: UITextField!
@@ -38,5 +37,3 @@ class SignUpViewController: UIViewController {
     
 
 }
-
-
