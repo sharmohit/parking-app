@@ -37,6 +37,6 @@ location on map and display the route to the parking location from the current l
 ##
 &nbsp;
 ## Task Lists
-- [ ] 1. **Login screen** @sharmohit
-- [ ] 2. Create account screen @JavteshGBC
+- [ ] 1. Create Sign-In Screen UI @sharmohit
+- [ ] 2. Create Sign-Up Screen UI @JavteshGBC
 ##
