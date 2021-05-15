@@ -41,4 +41,5 @@ location on map and display the route to the parking location from the current l
 - [ ] 2. Create Sign-Up Screen UI @JavteshGBC
 - [ ] 3. Create Add Parking Screen UI @sharmohit
 - [ ] 4. Create Update Profile Screen UI @JavteshGBC
+- [ ] 5. Configure Firestore Console and Firebase in Project @sharmohit
 ##
