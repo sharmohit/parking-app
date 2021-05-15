@@ -2,6 +2,7 @@
 //  Name: Mohit Sharma
 //  Student ID: 101342267
 //  Group Member: Javtesh Singh Bhullar
+//  Member ID: 101348129
 //
 //  AddParkingViewController.swift
 //  ParkingApp
@@ -20,10 +21,10 @@ class AddParkingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         print("AddParkingViewController")
     }
-
+    
     @IBAction func locateMeWasTapped(_ sender: UIButton) {
         print("Locate me was tapped")
     }
