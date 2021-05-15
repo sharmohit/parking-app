@@ -13,6 +13,7 @@
 		91708D4C264D55E8009DEDC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91708D4B264D55E8009DEDC4 /* Assets.xcassets */; };
 		91708D4F264D55E8009DEDC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91708D4D264D55E8009DEDC4 /* LaunchScreen.storyboard */; };
 		91708D5A264D65C2009DEDC4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91708D59264D65C2009DEDC4 /* LoginViewController.swift */; };
+		91CB9726264EC4DE0024B3D4 /* AddParkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CB9725264EC4DE0024B3D4 /* AddParkingViewController.swift */; };
 		D3FB02FF264DA3B3009DD721 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FB02FE264DA3B3009DD721 /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +26,7 @@
 		91708D4E264D55E8009DEDC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		91708D50264D55E8009DEDC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		91708D59264D65C2009DEDC4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		91CB9725264EC4DE0024B3D4 /* AddParkingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddParkingViewController.swift; sourceTree = "<group>"; };
 		D3FB02FE264DA3B3009DD721 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = ../SignUpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -74,6 +76,7 @@
 			children = (
 				91708D59264D65C2009DEDC4 /* LoginViewController.swift */,
 				D3FB02FE264DA3B3009DD721 /* SignUpViewController.swift */,
+				91CB9725264EC4DE0024B3D4 /* AddParkingViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -150,6 +153,7 @@
 			files = (
 				91708D5A264D65C2009DEDC4 /* LoginViewController.swift in Sources */,
 				91708D43264D55E7009DEDC4 /* AppDelegate.swift in Sources */,
+				91CB9726264EC4DE0024B3D4 /* AddParkingViewController.swift in Sources */,
 				D3FB02FF264DA3B3009DD721 /* SignUpViewController.swift in Sources */,
 				91708D45264D55E7009DEDC4 /* SceneDelegate.swift in Sources */,
 			);
