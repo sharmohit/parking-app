@@ -37,21 +37,29 @@ location on map and display the route to the parking location from the current l
 ##
 &nbsp;
 ## Screenshots
-<img src = "https://github.com/sharmohit/parking-app/blob/master/Images/ParkingApp_ERD.png" alt="ParkingApp ERD" width="703" height="387"/>
+<img src = "https://github.com/sharmohit/parking-app/blob/master/Images/ParkingApp_ERD.png" alt="ParkingApp ERD" width="695" height="387"/>
 <table style="width:100%">
   <tr>
     <th>Login UI</th>
     <th>Create Account UI</th>
     <th>Home View UI</th>
-    <th>Add Parking UI</th>
-    <th>Update Profile UI</th>
   </tr>
   <tr>
-    <td><img src = "https://github.com/sharmohit/parking-app/blob/master/Images/01_ParkingApp_LoginUI.png" alt="Login UI" width="188" height="340"/></td>
-    <td><img src = "https://github.com/sharmohit/parking-app/blob/master/Images/02_ParkingApp_CreateAccountUI.png" alt="Create Account UI" width="188" height="340"/></td>
-    <td><img src = "https://github.com/sharmohit/parking-app/blob/master/Images/03_ParkingApp_HomeViewUI.png" alt="Home View UI" width="188" height="340"/></td>
-    <td><img src = "https://github.com/sharmohit/parking-app/blob/master/Images/04_ParkingApp_AddParkingUI.png" alt="Add Parking UI" width="188" height="340"/</td>
-    <td><img src = "https://github.com/sharmohit/parking-app/blob/master/Images/05_ParkingApp_UpdateProfileUI.png" alt="Update Profile UI" width="188" height="340"/></td>
+    <td><img src = "https://github.com/sharmohit/parking-app/blob/master/Images/01_ParkingApp_LoginUI.png" alt="Login UI" width="205" height="443"/></td>
+    <td><img src = "https://github.com/sharmohit/parking-app/blob/master/Images/02_ParkingApp_CreateAccountUI.png" alt="Create Account UI" width="205" height="443"/></td>
+    <td><img src = "https://github.com/sharmohit/parking-app/blob/master/Images/03_ParkingApp_HomeViewUI.png" alt="Home View UI" width="205" height="443"/></td>
+  </tr>
+</table>
+<table style="width:100%">
+  <tr>
+    <th>Add Parking UI</th>
+    <th>Update Profile UI</th>
+    <th>Parking Detail UI</th>
+  </tr>
+  <tr>
+    <td><img src = "https://github.com/sharmohit/parking-app/blob/master/Images/04_ParkingApp_AddParkingUI.png" alt="Add Parking UI" width="205" height="443"/</td>
+    <td><img src = "https://github.com/sharmohit/parking-app/blob/master/Images/05_ParkingApp_UpdateProfileUI.png" alt="Update Profile UI" width="205" height="443"/></td>
+    <td><img src = "https://github.com/sharmohit/parking-app/blob/master/Images/06_ParkingApp_ParkingDetailUI.png" alt="Parking Detail UI" width="205" height="443"/></td>
   </tr>
 </table>
 
