@@ -15,6 +15,8 @@
 		91708D4C264D55E8009DEDC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91708D4B264D55E8009DEDC4 /* Assets.xcassets */; };
 		91708D4F264D55E8009DEDC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91708D4D264D55E8009DEDC4 /* LaunchScreen.storyboard */; };
 		91708D5A264D65C2009DEDC4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91708D59264D65C2009DEDC4 /* LoginViewController.swift */; };
+		9191149B2653EF14009741CB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9191149A2653EF14009741CB /* HomeViewController.swift */; };
+		9191149D2653F5D1009741CB /* ParkingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9191149C2653F5D1009741CB /* ParkingTableViewController.swift */; };
 		91CB9726264EC4DE0024B3D4 /* AddParkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CB9725264EC4DE0024B3D4 /* AddParkingViewController.swift */; };
 		D31F8D472654129E00FF9F70 /* DetailScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31F8D462654129E00FF9F70 /* DetailScreenViewController.swift */; };
 		D33C157A26515DDB007DAC2E /* UpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33C157926515DDB007DAC2E /* UpdateViewController.swift */; };
@@ -32,6 +34,8 @@
 		91708D4E264D55E8009DEDC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		91708D50264D55E8009DEDC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		91708D59264D65C2009DEDC4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		9191149A2653EF14009741CB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		9191149C2653F5D1009741CB /* ParkingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingTableViewController.swift; sourceTree = "<group>"; };
 		91CB9725264EC4DE0024B3D4 /* AddParkingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddParkingViewController.swift; sourceTree = "<group>"; };
 		D31F8D462654129E00FF9F70 /* DetailScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailScreenViewController.swift; sourceTree = "<group>"; };
 		D33C157926515DDB007DAC2E /* UpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UpdateViewController.swift; path = ../UpdateViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +105,8 @@
 				91CB9725264EC4DE0024B3D4 /* AddParkingViewController.swift */,
 				D33C157926515DDB007DAC2E /* UpdateViewController.swift */,
 				D31F8D462654129E00FF9F70 /* DetailScreenViewController.swift */,
+				9191149A2653EF14009741CB /* HomeViewController.swift */,
+				9191149C2653F5D1009741CB /* ParkingTableViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -233,6 +239,8 @@
 				91708D5A264D65C2009DEDC4 /* LoginViewController.swift in Sources */,
 				91708D43264D55E7009DEDC4 /* AppDelegate.swift in Sources */,
 				91CB9726264EC4DE0024B3D4 /* AddParkingViewController.swift in Sources */,
+				9191149B2653EF14009741CB /* HomeViewController.swift in Sources */,
+				9191149D2653F5D1009741CB /* ParkingTableViewController.swift in Sources */,
 				D3FB02FF264DA3B3009DD721 /* SignUpViewController.swift in Sources */,
 				91708D45264D55E7009DEDC4 /* SceneDelegate.swift in Sources */,
 				D33C157A26515DDB007DAC2E /* UpdateViewController.swift in Sources */,
