@@ -38,6 +38,7 @@ location on map and display the route to the parking location from the current l
 &nbsp;
 ## Screenshots
 <img src = "https://github.com/sharmohit/parking-app/blob/master/Images/ParkingApp_ERD.png" alt="ParkingApp ERD" width="695" height="387"/>
+<img src = "https://github.com/sharmohit/parking-app/blob/master/Images/ParkingApp_FireBase.png" alt="ParkingApp Firebase Console" width="695" height="387"/>
 <table style="width:100%">
   <tr>
     <th>Login UI</th>
