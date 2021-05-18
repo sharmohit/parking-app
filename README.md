@@ -47,11 +47,11 @@ location on map and display the route to the parking location from the current l
     <th>Update Profile UI</th>
   </tr>
   <tr>
-    <td><img src = "https://github.com/sharmohit/parking-app/blob/master/Images/01_ParkingApp_LoginUI.png" alt="Login UI" width="188" height="370"/></td>
-    <td><img src = "https://github.com/sharmohit/parking-app/blob/master/Images/02_ParkingApp_CreateAccountUI.png" alt="Create Account UI" width="188" height="370"/></td>
-    <td><img src = "https://github.com/sharmohit/parking-app/blob/master/Images/03_ParkingApp_HomeViewUI.png" alt="Home View UI" width="188" height="370"/></td>
-    <td><img src = "https://github.com/sharmohit/parking-app/blob/master/Images/04_ParkingApp_AddParkingUI.png" alt="Add Parking UI" width="188" height="370"/</td>
-    <td><img src = "https://github.com/sharmohit/parking-app/blob/master/Images/05_ParkingApp_UpdateProfileUI.png" alt="Update Profile UI" width="188" height="370"/></td>
+    <td><img src = "https://github.com/sharmohit/parking-app/blob/master/Images/01_ParkingApp_LoginUI.png" alt="Login UI" width="188" height="340"/></td>
+    <td><img src = "https://github.com/sharmohit/parking-app/blob/master/Images/02_ParkingApp_CreateAccountUI.png" alt="Create Account UI" width="188" height="340"/></td>
+    <td><img src = "https://github.com/sharmohit/parking-app/blob/master/Images/03_ParkingApp_HomeViewUI.png" alt="Home View UI" width="188" height="340"/></td>
+    <td><img src = "https://github.com/sharmohit/parking-app/blob/master/Images/04_ParkingApp_AddParkingUI.png" alt="Add Parking UI" width="188" height="340"/</td>
+    <td><img src = "https://github.com/sharmohit/parking-app/blob/master/Images/05_ParkingApp_UpdateProfileUI.png" alt="Update Profile UI" width="188" height="340"/></td>
   </tr>
 </table>
 
