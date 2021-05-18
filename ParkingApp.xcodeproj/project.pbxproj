@@ -16,6 +16,7 @@
 		91708D4F264D55E8009DEDC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91708D4D264D55E8009DEDC4 /* LaunchScreen.storyboard */; };
 		91708D5A264D65C2009DEDC4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91708D59264D65C2009DEDC4 /* LoginViewController.swift */; };
 		91CB9726264EC4DE0024B3D4 /* AddParkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CB9725264EC4DE0024B3D4 /* AddParkingViewController.swift */; };
+		D31F8D472654129E00FF9F70 /* DetailScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31F8D462654129E00FF9F70 /* DetailScreenViewController.swift */; };
 		D33C157A26515DDB007DAC2E /* UpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33C157926515DDB007DAC2E /* UpdateViewController.swift */; };
 		D3FB02FF264DA3B3009DD721 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FB02FE264DA3B3009DD721 /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
@@ -32,7 +33,8 @@
 		91708D50264D55E8009DEDC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		91708D59264D65C2009DEDC4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		91CB9725264EC4DE0024B3D4 /* AddParkingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddParkingViewController.swift; sourceTree = "<group>"; };
-		D33C157926515DDB007DAC2E /* UpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateViewController.swift; sourceTree = "<group>"; };
+		D31F8D462654129E00FF9F70 /* DetailScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailScreenViewController.swift; sourceTree = "<group>"; };
+		D33C157926515DDB007DAC2E /* UpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UpdateViewController.swift; path = ../UpdateViewController.swift; sourceTree = "<group>"; };
 		D3FB02FE264DA3B3009DD721 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = ../SignUpViewController.swift; sourceTree = "<group>"; };
 		F1BCB8431BB673133269E6E1 /* Pods-ParkingApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParkingApp.debug.xcconfig"; path = "Target Support Files/Pods-ParkingApp/Pods-ParkingApp.debug.xcconfig"; sourceTree = "<group>"; };
 		F3E989DF966D49CA8B959A93 /* Pods-ParkingApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParkingApp.release.xcconfig"; path = "Target Support Files/Pods-ParkingApp/Pods-ParkingApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -82,7 +84,6 @@
 				910E0C3D26502CD900E5CB88 /* GoogleService-Info.plist */,
 				91708D58264D6588009DEDC4 /* Views */,
 				91708D42264D55E7009DEDC4 /* AppDelegate.swift */,
-				D33C157926515DDB007DAC2E /* UpdateViewController.swift */,
 				91708D44264D55E7009DEDC4 /* SceneDelegate.swift */,
 				91708D48264D55E7009DEDC4 /* Main.storyboard */,
 				91708D4B264D55E8009DEDC4 /* Assets.xcassets */,
@@ -98,6 +99,8 @@
 				91708D59264D65C2009DEDC4 /* LoginViewController.swift */,
 				D3FB02FE264DA3B3009DD721 /* SignUpViewController.swift */,
 				91CB9725264EC4DE0024B3D4 /* AddParkingViewController.swift */,
+				D33C157926515DDB007DAC2E /* UpdateViewController.swift */,
+				D31F8D462654129E00FF9F70 /* DetailScreenViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D31F8D472654129E00FF9F70 /* DetailScreenViewController.swift in Sources */,
 				91708D5A264D65C2009DEDC4 /* LoginViewController.swift in Sources */,
 				91708D43264D55E7009DEDC4 /* AppDelegate.swift in Sources */,
 				91CB9726264EC4DE0024B3D4 /* AddParkingViewController.swift in Sources */,
