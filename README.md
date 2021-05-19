@@ -68,11 +68,45 @@ location on map and display the route to the parking location from the current l
 ##
 &nbsp;
 ## Task Lists
-- [ ] 1. Create Sign-In Screen UI @sharmohit
+- [ ] 1. Create Sign-In Screen @sharmohit
+  - [x] Design sign-in screen
+  - [ ] Login and validate user with firestore
+  - [ ] Implement remember me
+  - [ ] Link sign-up and home screens
+
 - [ ] 2. Create Sign-Up Screen UI @JavteshGBC
+  - [x] Design sign-up screen
+  - [ ] Validate user input
+  - [ ] Create user account with firestore
+  - [ ] Link sign-in and home screens
+
 - [ ] 3. Create Add Parking Screen UI @sharmohit
+  - [x] Design add parking screen
+  - [ ] Fetch and convert user location
+  - [ ] Validate user input
+  - [ ] Add parking with firestore
+
 - [ ] 4. Create Update Profile Screen UI @JavteshGBC
-- [ ] 5. Configure Firestore Console and Firebase in Project @sharmohit
+  - [x] Design update profile screen
+  - [ ] Validate user input
+  - [ ] update user profile with firestore
+  
+- [x] 5. Configure Firestore Console and Firebase in Project @sharmohit
+  - [x] Create firebase app and configure firestore
+  - [x] Add GoogleService-Info.plist in Xcode project
+  - [x] Configure firebase and install pods in Xcode project 
+  - [x] Test firestore with test data
+
 - [ ] 6. Create Parking Detail View Screen UI @JavteshGBC
+  - [x] Design parking detail view screen
+  - [ ] Fetch parking detail from firestore
+  - [ ] Display parking detail
+
 - [ ] 7. Create Home and Parking View Screen UI @sharmohit
+  - [x] Design home and parking view screen
+  - [x] Create tabbed home screen
+  - [x] Link navigation controller with view/add parking and profile screen, 
+  - [ ] Implement table view for view parking screen
+  - [ ] fetch user parking from firestore
+  - [ ] Link home and parking detail view screens
 ##
