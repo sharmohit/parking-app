@@ -68,11 +68,11 @@ location on map and display the route to the parking location from the current l
 ##
 &nbsp;
 ## Task Lists
-- [ ] 1. Create Sign-In Screen @sharmohit
+- [x] 1. Create Sign-In Screen @sharmohit
   - [x] Design sign-in screen
-  - [ ] Login and validate user with firestore
-  - [ ] Implement remember me
-  - [ ] Link sign-up and home screens
+  - [x] Login and validate user with firestore
+  - [x] Implement remember me
+  - [x] Link sign-up and home screens
 
 - [ ] 2. Create Sign-Up Screen UI @JavteshGBC
   - [x] Design sign-up screen
