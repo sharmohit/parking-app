@@ -13,8 +13,11 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 class SignUpViewController: UIViewController {
+    
+    let db = Firestore.firestore()
 
     @IBOutlet weak var etName: UITextField!
     @IBOutlet weak var etEmail: UITextField!
@@ -25,22 +28,64 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("SignUp Screen Launched")
+        print("Viewing SignUp Screen")
 
-        // Do any additional setup after loading the view.
+       
     }
     
     @IBAction func signUp(_ sender: Any) {
         
-        let name = etName.text ?? ""
-        let email = etEmail.text ?? ""
-        let pass = etPassword.text ?? ""
-        let mobileNo = etMobileNumber.text ?? ""
-        let carPlateNo = etCarPlateNumber.text ?? ""
+        let name = etName.text
+        let email = etEmail.text
+        let pass = etPassword.text
+        let mobileNo = etMobileNumber.text
+        let carPlateNo = etCarPlateNumber.text
         
-        print("The name entered is \(name) and has email id \(email) with password \(pass) and Mobile Number as \(mobileNo). \nThe car plate No. is : \(carPlateNo) ")
+        if (name!.isEmpty || email!.isEmpty || pass!.isEmpty || mobileNo!.isEmpty || carPlateNo!.isEmpty) {
+                    print("You must enter all required fields. ")
+                    createAlert()
+                }
         
+        else {
+            
+            let userInfo = [
+                "Name" : name,
+                "Email" : email,
+                "Password" : pass,
+                "Mobile Number " : mobileNo,
+                "Car Plate Number" : carPlateNo
+                    ]
+            
+            db.collection("APP USER").addDocument(data: userInfo){ (error ) in
+                
+                if let err = error{
+                    print("error when saving documnet")
+                    print(err)
+                    return
+                }
+                else {
+                    print("Data saved successfully")
+                    self.etName.text = ""
+                    self.etEmail.text = ""
+                    self.etPassword.text = ""
+                    self.etMobileNumber.text = ""
+                    self.etCarPlateNumber.text = ""
+                }
+                
+            }
+            
+        }
     }
+    
+    func createAlert() {
+        let alert = UIAlertController(title: "Error", message: "Please enter data in all fields", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: " OK ", style: .cancel, handler: {
+                                        action in print("tapped OK")}) )
+        present(alert,animated: true)
+    }
+        
+    
     
 
 }
