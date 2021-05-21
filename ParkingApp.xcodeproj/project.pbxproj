@@ -8,7 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		891F26849AECB2AB75083315 /* Pods_ParkingApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CDAAF05698D804F2D7FAA6 /* Pods_ParkingApp.framework */; };
+		9102CD9E2656A28E009BE40F /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9102CD9D2656A28E009BE40F /* StringExtensions.swift */; };
 		910E0C3E26502CD900E5CB88 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 910E0C3D26502CD900E5CB88 /* GoogleService-Info.plist */; };
+		914AE43B265557B300936E86 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914AE43A265557B300936E86 /* User.swift */; };
+		916ABB6D265576FE00E8450E /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916ABB6C265576FE00E8450E /* LoginController.swift */; };
 		91708D43264D55E7009DEDC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91708D42264D55E7009DEDC4 /* AppDelegate.swift */; };
 		91708D45264D55E7009DEDC4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91708D44264D55E7009DEDC4 /* SceneDelegate.swift */; };
 		91708D4A264D55E7009DEDC4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91708D48264D55E7009DEDC4 /* Main.storyboard */; };
@@ -25,7 +28,10 @@
 
 /* Begin PBXFileReference section */
 		52CDAAF05698D804F2D7FAA6 /* Pods_ParkingApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ParkingApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9102CD9D2656A28E009BE40F /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		910E0C3D26502CD900E5CB88 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		914AE43A265557B300936E86 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		916ABB6C265576FE00E8450E /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		91708D3F264D55E7009DEDC4 /* ParkingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParkingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91708D42264D55E7009DEDC4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91708D44264D55E7009DEDC4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +70,30 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9102CD9C2656A26C009BE40F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9102CD9D2656A28E009BE40F /* StringExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9102CD9F2656A38C009BE40F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				914AE43A265557B300936E86 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9102CDA02656A3A0009BE40F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				916ABB6C265576FE00E8450E /* LoginController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		91708D36264D55E7009DEDC4 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +115,9 @@
 		91708D41264D55E7009DEDC4 /* ParkingApp */ = {
 			isa = PBXGroup;
 			children = (
+				9102CDA02656A3A0009BE40F /* Controllers */,
+				9102CD9F2656A38C009BE40F /* Models */,
+				9102CD9C2656A26C009BE40F /* Extensions */,
 				910E0C3D26502CD900E5CB88 /* GoogleService-Info.plist */,
 				91708D58264D6588009DEDC4 /* Views */,
 				91708D42264D55E7009DEDC4 /* AppDelegate.swift */,
@@ -235,6 +268,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9102CD9E2656A28E009BE40F /* StringExtensions.swift in Sources */,
+				916ABB6D265576FE00E8450E /* LoginController.swift in Sources */,
 				D31F8D472654129E00FF9F70 /* DetailScreenViewController.swift in Sources */,
 				91708D5A264D65C2009DEDC4 /* LoginViewController.swift in Sources */,
 				91708D43264D55E7009DEDC4 /* AppDelegate.swift in Sources */,
@@ -243,6 +278,7 @@
 				9191149D2653F5D1009741CB /* ParkingTableViewController.swift in Sources */,
 				D3FB02FF264DA3B3009DD721 /* SignUpViewController.swift in Sources */,
 				91708D45264D55E7009DEDC4 /* SceneDelegate.swift in Sources */,
+				914AE43B265557B300936E86 /* User.swift in Sources */,
 				D33C157A26515DDB007DAC2E /* UpdateViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
