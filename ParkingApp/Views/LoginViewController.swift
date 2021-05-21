@@ -63,7 +63,7 @@ class LoginViewController: UIViewController, FirestoreFetchDelegate {
     }
     
     @IBAction func createAccountWasTapped(_ sender: UIButton) {
-        self.showCreateAccountScreen()
+        //self.showCreateAccountScreen()
     }
     
     func showHomeScreen()

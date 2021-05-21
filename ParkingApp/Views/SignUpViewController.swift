@@ -91,9 +91,8 @@ class SignUpViewController: UIViewController {
         print("Screen not found")
         return
         }
-
-        show(s1, sender: self)
+        
+        s1.modalPresentationStyle = .fullScreen
+        self.present(s1, animated: true)
     }
-
 }
-
