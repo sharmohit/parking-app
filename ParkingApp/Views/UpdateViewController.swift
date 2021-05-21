@@ -16,15 +16,13 @@ import UIKit
 class UpdateViewController: UIViewController {
     
     @IBOutlet weak var utName: UITextField!
-    
     @IBOutlet weak var utEmail: UITextField!
-    
     @IBOutlet weak var utPassword: UITextField!
-    
     @IBOutlet weak var utMobileNumber: UITextField!
-    
     @IBOutlet weak var utCarPlateNumber: UITextField!
     
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,9 +31,9 @@ class UpdateViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func saveButton(_ sender: Any) {
-        
-        print("save Button Clicked")
+    
+    @IBAction func updateButton(_ sender: Any) {
+        print("Update Button Clicked")
         
         let userName = utName.text ?? ""
         let userEmail = utEmail.text ?? ""
@@ -47,5 +45,28 @@ class UpdateViewController: UIViewController {
         
     }
     
+    
+    @IBAction func logoutButton(_ sender: Any) {
+        
+        print("Logout Button Clicked")
+        
+    }
+    
+    @IBAction func deleteButton(_ sender: Any) {
+        
+        print("Delete button clicked")
+        
+    }
+
 
 }
+    
+
+
+
+
+
+
+
+
+
