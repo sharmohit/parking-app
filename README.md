@@ -74,11 +74,11 @@ location on map and display the route to the parking location from the current l
   - [x] Implement remember me
   - [x] Link sign-up and home screens
 
-- [ ] 2. Create Sign-Up Screen UI @JavteshGBC
+- [x] 2. Create Sign-Up Screen UI @JavteshGBC
   - [x] Design sign-up screen
-  - [ ] Validate user input
-  - [ ] Create user account with firestore
-  - [ ] Link sign-in and home screens
+  - [x] Validate user input
+  - [x] Create user account with firestore
+  - [x] Link sign-in and home screens
 
 - [ ] 3. Create Add Parking Screen UI @sharmohit
   - [x] Design add parking screen
@@ -109,4 +109,12 @@ location on map and display the route to the parking location from the current l
   - [ ] Implement table view for view parking screen
   - [ ] fetch user parking from firestore
   - [ ] Link home and parking detail view screens
+
+- [ ] 8. Design Final UI with illustrations for all UI Screens @JavteshGBC
+  - [x] SignUp Screen
+  - [x] Update Screen
+  - [ ] Login Screen
+  - [ ] Home Screen
+  - [ ] Add Parking
+  - [ ] parking detail
 ##
