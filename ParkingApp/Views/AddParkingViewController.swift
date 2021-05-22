@@ -13,6 +13,9 @@
 import UIKit
 
 class AddParkingViewController: UIViewController {
+    
+    private var addParkingController = AddParkingController()
+    
     @IBOutlet weak var buildingCodeTextField: UITextField!
     @IBOutlet weak var hoursSegment: UISegmentedControl!
     @IBOutlet weak var plateNumberTextField: UITextField!
@@ -31,5 +34,14 @@ class AddParkingViewController: UIViewController {
     
     @IBAction func addParkingWasTapped(_ sender: UIButton) {
         print("Add parking was tapped")
+        addParkingController.AddParking(buildingCode: buildingCodeTextField.text!, parkingHours:4, carPlateNumber: plateNumberTextField.text!, suitNumber: Int(suitNumberTextField.text!) ?? 0)
+        self.clearInputs()
+    }
+    
+    func clearInputs() {
+        buildingCodeTextField.text = ""
+        plateNumberTextField.text = ""
+        suitNumberTextField.text = ""
+        locationTextField.text = ""
     }
 }
