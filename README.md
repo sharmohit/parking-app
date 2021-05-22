@@ -88,8 +88,11 @@ location on map and display the route to the parking location from the current l
 
 - [ ] 4. Create Update Profile Screen UI @JavteshGBC
   - [x] Design update profile screen
-  - [ ] Validate user input
-  - [ ] update user profile with firestore
+  - [x] Fetch user input
+  - [x] Validate user input
+  - [x] update user profile with firestore
+  - [x] Delete user profile
+  - [x] Logout user progile
   
 - [x] 5. Configure Firestore Console and Firebase in Project @sharmohit
   - [x] Create firebase app and configure firestore
