@@ -83,8 +83,8 @@ location on map and display the route to the parking location from the current l
 - [ ] 3. Create Add Parking Screen UI @sharmohit
   - [x] Design add parking screen
   - [ ] Fetch and convert user location
-  - [ ] Validate user input
-  - [ ] Add parking with firestore
+  - [x] Validate user input
+  - [x] Add parking with firestore
 
 - [ ] 4. Create Update Profile Screen UI @JavteshGBC
   - [x] Design update profile screen
