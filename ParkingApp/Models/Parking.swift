@@ -72,9 +72,21 @@ struct Parking : Codable {
         self.dateTime = try values.decode(Timestamp.self, forKey: .dateTime)
     }
     
-    func AddParkingData(parking:Parking) {
+    func AddParkingData(parking:Parking) -> DocumentReference? {
         do {
-            try db.collection("parkings").addDocument(from : parking)
+            let documentRef = try db.collection("parkings").addDocument(from : parking)
+            return documentRef
+            
+        } catch {
+            print(error)
+        }
+        return nil
+    }
+    
+    func mapUserParking(userID:String, parkingID:String) {
+        do {
+            try db.collection("users_parkings").addDocument(
+                data: ["email": userID, "parking_id": parkingID])
         } catch {
             print(error)
         }

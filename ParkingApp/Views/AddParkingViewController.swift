@@ -14,6 +14,7 @@ import UIKit
 
 class AddParkingViewController: UIViewController {
     
+    private let user = User.getInstance()
     private var addParkingController = AddParkingController()
     
     @IBOutlet weak var buildingCodeTextField: UITextField!
@@ -25,7 +26,7 @@ class AddParkingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("AddParkingViewController")
+        plateNumberTextField.text = self.user.carPlateNumber
     }
     
     @IBAction func locateMeWasTapped(_ sender: UIButton) {
@@ -35,6 +36,7 @@ class AddParkingViewController: UIViewController {
     @IBAction func addParkingWasTapped(_ sender: UIButton) {
         
         let errorMsg = self.addParkingController.addParking(
+            userID: self.user.email,
             buildingCode: buildingCodeTextField.text!,
             parkingHours: getHourFromSegmentIndex(segmentIndex: hoursSegment.selectedSegmentIndex),
             carPlateNumber: plateNumberTextField.text!,
