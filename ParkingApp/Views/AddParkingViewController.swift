@@ -33,15 +33,45 @@ class AddParkingViewController: UIViewController {
     }
     
     @IBAction func addParkingWasTapped(_ sender: UIButton) {
-        print("Add parking was tapped")
-        addParkingController.AddParking(buildingCode: buildingCodeTextField.text!, parkingHours:4, carPlateNumber: plateNumberTextField.text!, suitNumber: Int(suitNumberTextField.text!) ?? 0)
+        
+        let errorMsg = self.addParkingController.addParking(
+            buildingCode: buildingCodeTextField.text!,
+            parkingHours: getHourFromSegmentIndex(segmentIndex: hoursSegment.selectedSegmentIndex),
+            carPlateNumber: plateNumberTextField.text!,
+            suitNumber: Int(suitNumberTextField.text!) ?? 0)
+        
+        if !errorMsg.isEmpty {
+            showAlert(title: "Error", message: errorMsg)
+        }
         self.clearInputs()
     }
     
-    func clearInputs() {
+    private func clearInputs() {
         buildingCodeTextField.text = ""
         plateNumberTextField.text = ""
         suitNumberTextField.text = ""
         locationTextField.text = ""
+    }
+    
+    private func getHourFromSegmentIndex(segmentIndex:Int) -> Double {
+        switch segmentIndex {
+        case 0:
+            return 1.0
+        case 1:
+            return 4.0
+        case 2:
+            return 12.0
+        case 3:
+            return 24.0
+        default:
+            return -0.0
+        }
+    }
+    
+    private func showAlert(title:String, message:String) {
+        let alertController = UIAlertController(title: title, message:
+                                                    message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: .default))
+        self.present(alertController, animated: true, completion: nil)
     }
 }
