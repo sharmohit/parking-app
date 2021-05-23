@@ -82,7 +82,7 @@ location on map and display the route to the parking location from the current l
 
 - [ ] 3. Create Add Parking Screen UI @sharmohit
   - [x] Design add parking screen
-  - [ ] Fetch and convert user location
+  - [x] Fetch and convert user location
   - [x] Validate user input
   - [x] Add parking with firestore
 
@@ -120,4 +120,9 @@ location on map and display the route to the parking location from the current l
   - [ ] Home Screen
   - [ ] Add Parking
   - [ ] parking detail
+  
+- [x] 9. Add location service @sharmohit
+  - [x] Implement location controller
+  - [x] Implement reverse geocoding
+  - [x] Implement location geocoding
 ##
