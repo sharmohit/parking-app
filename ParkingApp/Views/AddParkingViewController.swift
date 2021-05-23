@@ -31,7 +31,7 @@ class AddParkingViewController: UIViewController {
         super.viewDidLoad()
         
         self.locationController.initialize(delegate: self)
-        self.locationController.delegate = self
+        self.locationController.locationDataDelegate = self
         
         plateNumberTextField.text = self.user.carPlateNumber
     }
@@ -97,15 +97,15 @@ class AddParkingViewController: UIViewController {
     }
 }
 
-extension AddParkingViewController : CLLocationManagerDelegate, LocationFetchDelegate {
+extension AddParkingViewController : CLLocationManagerDelegate, LocationDataDelegate {
     
-    func locationFetched() {
-        addParking(lat: self.locationController.lat,
-                   long: self.locationController.long)
+    func locationDidChangeAddress() {
+        self.locationTextField.text = self.locationController.address
     }
     
-    func addressFetched() {
-        self.locationTextField.text = self.locationController.address
+    func locationDidChangeLocation() {
+        addParking(lat: self.locationController.lat,
+                   long: self.locationController.long)
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

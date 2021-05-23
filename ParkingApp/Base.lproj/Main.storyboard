@@ -80,7 +80,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="810.39999999999998" y="77.58620689655173"/>
+            <point key="canvasLocation" x="665" y="78"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="3Tz-ld-8sW">
@@ -100,7 +100,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gZv-Yd-l90" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1559.2" y="77.58620689655173"/>
+            <point key="canvasLocation" x="1450" y="78"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Wzp-kY-SG3">
@@ -117,7 +117,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qgw-Wi-eyC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2359.1999999999998" y="77.58620689655173"/>
+            <point key="canvasLocation" x="2244" y="78"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="xBF-uy-gCT">
@@ -213,7 +213,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nD5-TR-am2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="76" y="77.58620689655173"/>
+            <point key="canvasLocation" x="-132" y="78"/>
         </scene>
         <!--Add Parking-->
         <scene sceneID="zg3-mE-PQ1">
@@ -599,13 +599,16 @@
                                 </state>
                                 <connections>
                                     <action selector="getDirection:" destination="w74-yB-vMM" eventType="touchUpInside" id="PAr-jY-BmB"/>
+                                    <segue destination="QHC-lR-tGh" kind="show" id="cVe-WZ-fsM"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Gu6-7D-lll"/>
                         <color key="backgroundColor" systemColor="linkColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Parking Detail" id="Ze9-rH-5Bn"/>
+                    <navigationItem key="navigationItem" title="Parking Detail" id="Ze9-rH-5Bn">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="HKb-Ix-49A"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="lblBulidingCode" destination="2G1-sp-wJs" id="d5g-oe-gDO"/>
                         <outlet property="lblDateAndTime" destination="UqI-BH-usI" id="5dp-L8-XAZ"/>
@@ -616,7 +619,32 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vsp-D3-7u1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1418" y="822"/>
+            <point key="canvasLocation" x="1449" y="822"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="9HW-Ri-FLs">
+            <objects>
+                <viewController id="QHC-lR-tGh" customClass="MapViewController" customModule="ParkingApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oJz-jV-5Hr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="no8-Kd-5VE">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="BpB-mW-xbx"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="22t-SE-DgJ"/>
+                    <connections>
+                        <outlet property="mapView" destination="no8-Kd-5VE" id="zDy-0A-b16"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pgr-gJ-SKh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2244" y="822"/>
         </scene>
     </scenes>
     <resources>
@@ -634,6 +662,9 @@
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="secondarySystemGroupedBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBlueColor">
