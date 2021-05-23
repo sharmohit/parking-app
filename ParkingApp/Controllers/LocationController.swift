@@ -14,13 +14,27 @@ import Foundation
 import CoreLocation
 import MapKit
 
-protocol LocationDataDelegate {
-    func locationDidChangeAddress()
-    func locationDidChangeLocation()
-}
-
-protocol LocationRouteDelegate {
-    func locationDidCalculateRoute(response:MKDirections.Response)
+struct Address {
+    var street:String
+    var city:String
+    var province:String
+    var country:String
+    
+    init() {
+        self.street = ""
+        self.city = ""
+        self.province = ""
+        self.country = ""
+    }
+    
+    func getCompleteAddress() -> String {
+        
+        return "\(self.street), \(self.city), \(self.province), \(self.country)"
+    }
+    
+    func getShortAddress() -> String {
+        return "\(self.street), \(self.city), \(self.country)"
+    }
 }
 
 class LocationController {
@@ -28,15 +42,12 @@ class LocationController {
     private let locationManager = CLLocationManager()
     private let geocoder = CLGeocoder()
     
-    var locationDataDelegate:LocationDataDelegate?
-    var locationRouteDelegate:LocationRouteDelegate?
-    
-    var address:String
+    var address:Address
     var lat:Double
     var long:Double
     
     init() {
-        self.address = ""
+        self.address = Address()
         self.lat = 0.0
         self.long = 0.0
     }
@@ -60,13 +71,16 @@ class LocationController {
     
     // MARK: - GeoLocation
     
-    func fetchLocationCoord(address : String){
+    func fetchLocationCoord(address : String, completionHandler: @escaping ()->Void){
         self.geocoder.geocodeAddressString(address, completionHandler: { (placemark, error) in
-            self.processCoordGeoResponse(placemarks: placemark, error: error)
+            self.processCoordGeoResponse(placemarks: placemark, error: error){
+                () in
+                completionHandler()
+            }
         })
     }
     
-    private func processCoordGeoResponse(placemarks: [CLPlacemark]?, error: Error?) {
+    private func processCoordGeoResponse(placemarks: [CLPlacemark]?, error: Error?, completionHandler: @escaping ()->Void) {
         
         self.lat = 0.0
         self.long = 0.0
@@ -84,47 +98,51 @@ class LocationController {
                 print("lat \(obtainedLocation!.coordinate.latitude) , lng \(obtainedLocation!.coordinate.longitude)")
                 self.lat = obtainedLocation!.coordinate.latitude
                 self.long = obtainedLocation!.coordinate.longitude
+                completionHandler()
             } else {
                 print("No coordinates Found")
             }
         }
-        self.locationDataDelegate?.locationDidChangeLocation()
     }
     
     // MARK: - Reverse GeoLocation
     
-    func fetchAddress(location : CLLocation) {
+    func fetchAddress(location : CLLocation, completionHandler: @escaping ()->Void) {
         self.geocoder.reverseGeocodeLocation(location, completionHandler: { (placemark, error) in
-            self.processReverseGeoResponse(placemarkList: placemark, error: error)
+            self.processReverseGeoResponse(placemarkList: placemark, error: error){() in
+                completionHandler()
+            }
         })
     }
     
-    func processReverseGeoResponse(placemarkList : [CLPlacemark]?, error : Error?) {
-        
-        self.address = ""
-        
+    private func processReverseGeoResponse(placemarkList : [CLPlacemark]?, error : Error?, completionHandler: @escaping ()->Void) {
+
         if error != nil {
             print("Unable to get address")
         } else {
             if let placemarks = placemarkList, let placemark = placemarks.first {
                 
-                let street = placemark.thoroughfare ?? "N/A"
-                let city = placemark.locality ?? "N/A"
-                let province = placemark.administrativeArea ?? "N/A"
-                let country = placemark.country ?? "N/A"
+                let street = placemark.thoroughfare ?? "Unknown"
+                let city = placemark.locality ?? "Unknown"
+                let province = placemark.administrativeArea ?? "Unknown"
+                let country = placemark.country ?? "Unknown"
                 
-                self.address = "\(street), \(city), \(province), \(country)"
+                self.address.street = "\(street)"
+                self.address.city = "\(city)"
+                self.address.province = "\(province)"
+                self.address.country = "\(country)"
+                print(self.address.getCompleteAddress())
+                completionHandler()
                 
             } else {
                 print("No Address Found")
             }
         }
-        self.locationDataDelegate?.locationDidChangeAddress()
     }
     
     // MARK: - Route
     
-    func fetchRoute(pickupCoordinate: CLLocationCoordinate2D, destinationCoordinate: CLLocationCoordinate2D) {
+    func fetchRoute(pickupCoordinate: CLLocationCoordinate2D, destinationCoordinate: CLLocationCoordinate2D, completionHandler: @escaping (MKDirections.Response)->Void) {
         
         let request = MKDirections.Request()
         request.source = MKMapItem(placemark: MKPlacemark(coordinate: pickupCoordinate, addressDictionary: nil))
@@ -134,10 +152,10 @@ class LocationController {
         
         let directions = MKDirections(request: request)
         
-        directions.calculate { [unowned self] response, error in
+        directions.calculate { response, error in
             guard let unwrappedResponse = response else { return }
             
-            self.locationRouteDelegate?.locationDidCalculateRoute(response: unwrappedResponse)
+            completionHandler(unwrappedResponse)
         }
     }
 }

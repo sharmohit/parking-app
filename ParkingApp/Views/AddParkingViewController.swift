@@ -31,16 +31,17 @@ class AddParkingViewController: UIViewController {
         super.viewDidLoad()
         
         self.locationController.initialize(delegate: self)
-        self.locationController.locationDataDelegate = self
-        
-        plateNumberTextField.text = self.user.carPlateNumber
+        self.plateNumberTextField.text = self.user.carPlateNumber
     }
     
     @IBAction func locateMeWasTapped(_ sender: UIButton) {
         print(currentLocation!)
         locationController.fetchAddress(
             location:CLLocation(latitude: self.currentLocation?.latitude ?? 0.0,
-                                longitude: self.currentLocation?.longitude ?? 0.0))
+                                longitude: self.currentLocation?.longitude ?? 0.0)){
+            () in
+            self.locationTextField.text = self.locationController.address.getCompleteAddress()
+        }
     }
     
     @IBAction func addParkingWasTapped(_ sender: UIButton) {
@@ -49,13 +50,17 @@ class AddParkingViewController: UIViewController {
         if address.isEmpty {
             showAlert(title: "Error", message: "Parking location is empty")
         } else {
-            self.locationController.fetchLocationCoord(address: address)
+            self.locationController.fetchLocationCoord(address: address){
+                () in
+                self.addParking(lat: self.locationController.lat,
+                           long: self.locationController.long)
+            }
         }
     }
     
     private func addParking(lat:Double, long:Double) {
         let errorMsg = self.addParkingController.addParking(
-            userID: self.user.email,
+            userID: self.user.id!,
             buildingCode: buildingCodeTextField.text!,
             parkingHours: getHourFromSegmentIndex(segmentIndex: hoursSegment.selectedSegmentIndex),
             carPlateNumber: plateNumberTextField.text!,
@@ -97,16 +102,7 @@ class AddParkingViewController: UIViewController {
     }
 }
 
-extension AddParkingViewController : CLLocationManagerDelegate, LocationDataDelegate {
-    
-    func locationDidChangeAddress() {
-        self.locationTextField.text = self.locationController.address
-    }
-    
-    func locationDidChangeLocation() {
-        addParking(lat: self.locationController.lat,
-                   long: self.locationController.long)
-    }
+extension AddParkingViewController : CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         

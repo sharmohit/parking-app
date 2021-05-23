@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		891F26849AECB2AB75083315 /* Pods_ParkingApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CDAAF05698D804F2D7FAA6 /* Pods_ParkingApp.framework */; };
 		9102CD9E2656A28E009BE40F /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9102CD9D2656A28E009BE40F /* StringExtensions.swift */; };
+		91089725265A97C00098CDFD /* ViewParkingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91089724265A97C00098CDFD /* ViewParkingController.swift */; };
+		91089727265AFB430098CDFD /* ParkingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91089726265AFB430098CDFD /* ParkingTableViewCell.swift */; };
 		910E0C3E26502CD900E5CB88 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 910E0C3D26502CD900E5CB88 /* GoogleService-Info.plist */; };
 		911E54702659A53D008792F4 /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911E546F2659A53D008792F4 /* LocationController.swift */; };
 		914AE43B265557B300936E86 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914AE43A265557B300936E86 /* User.swift */; };
@@ -34,6 +36,8 @@
 /* Begin PBXFileReference section */
 		52CDAAF05698D804F2D7FAA6 /* Pods_ParkingApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ParkingApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9102CD9D2656A28E009BE40F /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		91089724265A97C00098CDFD /* ViewParkingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewParkingController.swift; sourceTree = "<group>"; };
+		91089726265AFB430098CDFD /* ParkingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingTableViewCell.swift; sourceTree = "<group>"; };
 		910E0C3D26502CD900E5CB88 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		911E546F2659A53D008792F4 /* LocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationController.swift; sourceTree = "<group>"; };
 		914AE43A265557B300936E86 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -104,6 +108,7 @@
 				916ABB6C265576FE00E8450E /* LoginController.swift */,
 				91FB7DDA265942EE00275EBE /* AddParkingController.swift */,
 				911E546F2659A53D008792F4 /* LocationController.swift */,
+				91089724265A97C00098CDFD /* ViewParkingController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -155,6 +160,7 @@
 				D326CBBD265796D700B4B9EE /* UpdateViewController.swift */,
 				9191149C2653F5D1009741CB /* ParkingTableViewController.swift */,
 				91CC0EEE265A432000BDCEAE /* MapViewController.swift */,
+				91089726265AFB430098CDFD /* ParkingTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -296,6 +302,8 @@
 				9191149B2653EF14009741CB /* HomeViewController.swift in Sources */,
 				9191149D2653F5D1009741CB /* ParkingTableViewController.swift in Sources */,
 				91708D45264D55E7009DEDC4 /* SceneDelegate.swift in Sources */,
+				91089727265AFB430098CDFD /* ParkingTableViewCell.swift in Sources */,
+				91089725265A97C00098CDFD /* ViewParkingController.swift in Sources */,
 				D326CBC32659317400B4B9EE /* TheUser.swift in Sources */,
 				911E54702659A53D008792F4 /* LocationController.swift in Sources */,
 				914AE43B265557B300936E86 /* User.swift in Sources */,

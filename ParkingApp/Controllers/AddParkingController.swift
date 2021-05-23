@@ -30,9 +30,11 @@ class AddParkingController {
         self.parking.suitNumber = suitNumber
         self.parking.locLat = lat
         self.parking.locLong = long
-        if let documentRef = self.parking.AddParkingData(parking: self.parking) {
+        self.parking.addParking(userID: User.getInstance().id!, parking: self.parking)
+        /*
+        if let documentRef = self.parking.addParking(userID: User.getInstance().id!, parking: self.parking) {
             self.parking.mapUserParking(userID: userID ,parkingID: documentRef.documentID)
-        }
+        }*/
         
         return self.validateParking()
     }

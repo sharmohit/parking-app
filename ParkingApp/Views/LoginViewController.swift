@@ -12,8 +12,8 @@
 
 import UIKit
 
-class LoginViewController: UIViewController, FirestoreFetchDelegate {
-    
+class LoginViewController: UIViewController, LoginDelegate {
+
     private var loginController = LoginController()
     
     @IBOutlet weak var emailTextField: UITextField!
@@ -23,7 +23,7 @@ class LoginViewController: UIViewController, FirestoreFetchDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loginController.user.delegate = self
+        loginController.delegate = self
         loginController.initiateLogin()
     }
     
@@ -48,18 +48,16 @@ class LoginViewController: UIViewController, FirestoreFetchDelegate {
         loginController.fetchUser(id: email, password: password)
     }
     
-    func fetchCompleted(isError:Bool) {
-        
-        if isError {
-            self.showAlert(title: "Login Error", message: "User not found")
-            return
-        }
-        
+    func loginDidSuccess() {
         if loginController.login(isSaveLogin: self.stayLoginSwitch.isOn) {
             self.showHomeScreen()
         } else {
             self.showAlert(title: "Login Error", message: "Invaild credentials")
         }
+    }
+    
+    func loginDidFailed(error: String) {
+        self.showAlert(title: "Error", message: error)
     }
     
     @IBAction func createAccountWasTapped(_ sender: UIButton) {
@@ -72,8 +70,6 @@ class LoginViewController: UIViewController, FirestoreFetchDelegate {
             return
         }
         
-        //let taskListVC = taskListNVC.viewControllers[0] as! ParkingTableViewController
-        //taskListVC.currentUser = loginController.user
         parkingViewNVC.modalPresentationStyle = .fullScreen
         self.present(parkingViewNVC, animated:true)
     }

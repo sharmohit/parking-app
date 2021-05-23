@@ -149,6 +149,8 @@ class UpdateViewController: UIViewController {
         TheUser.userObject.carPlateNo = ""
         TheUser.userObject.id = ""
         
+        UserDefaults.standard.set("", forKey:"email")
+        UserDefaults.standard.set("", forKey:"pass")
         
         movingToLoginScreen()
         
