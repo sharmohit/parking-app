@@ -18,12 +18,11 @@ class LoginController {
     
     var email:String
     var password:String
-    var user:User
+    var user = User.getInstance()
     
     init() {
         self.email = ""
         self.password = ""
-        self.user = User()
     }
     
     func initiateLogin() {

@@ -1,4 +1,4 @@
-////  Group: Project Groups 12
+//  Group: Project Groups 12
 //  Name: Mohit Sharma
 //  Student ID: 101342267
 //  Group Member: Javtesh Singh Bhullar
@@ -19,6 +19,16 @@ public protocol FirestoreFetchDelegate {
 
 class User {
     
+    private static var shared:User?
+    static func getInstance() -> User {
+        if self.shared != nil {
+            return self.shared!
+        } else {
+            self.shared = User()
+            return self.shared!
+        }
+    }
+    
     private let db = Firestore.firestore()
     var delegate:FirestoreFetchDelegate?
     
@@ -26,12 +36,14 @@ class User {
     var name:String
     var password:String
     var phone:String
+    var carPlateNumber:String
     
     init() {
         self.email = ""
         self.name = ""
         self.password = ""
         self.phone = ""
+        self.carPlateNumber = ""
     }
     
     func fetchUserData(id:String) {
@@ -51,6 +63,7 @@ class User {
                     self.name = result?["name"] as! String
                     self.password = result?["password"] as! String
                     self.phone = result?["phone"] as! String
+                    self.carPlateNumber = result?["car_plate_number"] as! String
                     self.delegate?.fetchCompleted(isError: false)
                 }
             })
