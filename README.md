@@ -122,7 +122,9 @@ location on map and display the route to the parking location from the current l
   - [ ] parking detail
   
 - [x] 9. Add location service @sharmohit
+  - [x] Create MapView Screen 
   - [x] Implement location controller
   - [x] Implement reverse geocoding
   - [x] Implement location geocoding
+  - [x] Implement and show route on map
 ##
