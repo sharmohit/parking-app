@@ -11,11 +11,15 @@
 //
 
 import UIKit
+import MapKit
 
 class AddParkingViewController: UIViewController {
     
     private let user = User.getInstance()
+    private var locationController = LocationController()
     private var addParkingController = AddParkingController()
+    
+    private var currentLocation:CLLocationCoordinate2D?
     
     @IBOutlet weak var buildingCodeTextField: UITextField!
     @IBOutlet weak var hoursSegment: UISegmentedControl!
@@ -26,21 +30,37 @@ class AddParkingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.locationController.initialize(delegate: self)
+        self.locationController.delegate = self
+        
         plateNumberTextField.text = self.user.carPlateNumber
     }
     
     @IBAction func locateMeWasTapped(_ sender: UIButton) {
-        print("Locate me was tapped")
+        print(currentLocation!)
+        locationController.fetchAddress(
+            location:CLLocation(latitude: self.currentLocation?.latitude ?? 0.0,
+                                longitude: self.currentLocation?.longitude ?? 0.0))
     }
     
     @IBAction func addParkingWasTapped(_ sender: UIButton) {
         
+        let address = self.locationTextField.text!
+        if address.isEmpty {
+            showAlert(title: "Error", message: "Parking location is empty")
+        } else {
+            self.locationController.fetchLocationCoord(address: address)
+        }
+    }
+    
+    private func addParking(lat:Double, long:Double) {
         let errorMsg = self.addParkingController.addParking(
             userID: self.user.email,
             buildingCode: buildingCodeTextField.text!,
             parkingHours: getHourFromSegmentIndex(segmentIndex: hoursSegment.selectedSegmentIndex),
             carPlateNumber: plateNumberTextField.text!,
-            suitNumber: Int(suitNumberTextField.text!) ?? 0)
+            suitNumber: Int(suitNumberTextField.text!) ?? 0,
+            lat: lat, long: long)
         
         if !errorMsg.isEmpty {
             showAlert(title: "Error", message: errorMsg)
@@ -50,8 +70,7 @@ class AddParkingViewController: UIViewController {
     
     private func clearInputs() {
         buildingCodeTextField.text = ""
-        plateNumberTextField.text = ""
-        suitNumberTextField.text = ""
+        suitNumberTextField.text = user.carPlateNumber
         locationTextField.text = ""
     }
     
@@ -75,5 +94,30 @@ class AddParkingViewController: UIViewController {
                                                     message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Dismiss", style: .default))
         self.present(alertController, animated: true, completion: nil)
+    }
+}
+
+extension AddParkingViewController : CLLocationManagerDelegate, LocationFetchDelegate {
+    
+    func locationFetched() {
+        addParking(lat: self.locationController.lat,
+                   long: self.locationController.long)
+    }
+    
+    func addressFetched() {
+        self.locationTextField.text = self.locationController.address
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        self.currentLocation = manager.location?.coordinate
+        
+        if self.currentLocation == nil {
+            self.showAlert(title: "Error", message: "Unable to get location.")
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(#function, "Unable to get location \(error)")
     }
 }

@@ -22,12 +22,14 @@ class AddParkingController {
     }
     
     /// Return error string if add parking fail.
-    func addParking(userID:String, buildingCode:String, parkingHours:Double, carPlateNumber:String, suitNumber:Int) -> String {
+    func addParking(userID:String, buildingCode:String, parkingHours:Double, carPlateNumber:String, suitNumber:Int, lat:Double, long:Double) -> String {
         
         self.parking.buildingCode = buildingCode
         self.parking.parkingHours = parkingHours
         self.parking.carPlateNumber = carPlateNumber
         self.parking.suitNumber = suitNumber
+        self.parking.locLat = lat
+        self.parking.locLong = long
         if let documentRef = self.parking.AddParkingData(parking: self.parking) {
             self.parking.mapUserParking(userID: userID ,parkingID: documentRef.documentID)
         }
