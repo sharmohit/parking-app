@@ -171,15 +171,34 @@ class UpdateViewController: UIViewController {
       
         print("Delete button Tapped")
         
-        db.collection("users").document(TheUser.userObject.id).delete{ (error) in
-            if error != nil {
-                print("There was an error while deleting the user info")
+        confirmDeletition()
+        
+        
+    }
+    
+    func confirmDeletition(){
+        
+        let refreshAlert = UIAlertController(title: "Confirm", message: "All Data will be deleted ", preferredStyle: UIAlertController.Style.alert)
+
+        refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+              print("USER DLETITION : CONFIRMED")
+            
+            self.db.collection("users").document(TheUser.userObject.id).delete{ (error) in
+                if error != nil {
+                    print("There was an error while deleting the user info")
+                }
+                else{
+                    print("user Deleted")
+                    self.movingToLoginScreen()
+                }
             }
-            else{
-                print("user Deleted")
-                self.movingToLoginScreen()
-            }
-        }
+        }))
+
+        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+              print("USER DLETITION : CANCELLED")
+        }))
+
+        present(refreshAlert, animated: true, completion: nil)
     }
 }
     

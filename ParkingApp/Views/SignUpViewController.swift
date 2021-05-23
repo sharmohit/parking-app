@@ -31,7 +31,6 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
         
         print("Viewing SignUp Screen")
-
        
     }
     

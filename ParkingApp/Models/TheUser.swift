@@ -26,7 +26,6 @@ class TheUser{
     var pass = ""
     var mobileNo = ""
     var carPlateNo = ""
-    
 }
 
 // use this to access properties anywhere:  TheUser.userObject.name
