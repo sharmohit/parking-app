@@ -618,6 +618,7 @@
             </objects>
             <point key="canvasLocation" x="1418" y="822"/>
         </scene>
+    </scenes>
     <resources>
         <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="location.viewfinder" catalog="system" width="128" height="115"/>
