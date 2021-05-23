@@ -90,11 +90,8 @@
 			isa = PBXGroup;
 			children = (
 				914AE43A265557B300936E86 /* User.swift */,
-<<<<<<< javtesh_feature_UpdateProfileScreen
 				D326CBC22659317400B4B9EE /* TheUser.swift */,
-=======
 				91FB7DD82659257F00275EBE /* Parking.swift */,
->>>>>>> master
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -296,11 +293,8 @@
 				9191149B2653EF14009741CB /* HomeViewController.swift in Sources */,
 				9191149D2653F5D1009741CB /* ParkingTableViewController.swift in Sources */,
 				91708D45264D55E7009DEDC4 /* SceneDelegate.swift in Sources */,
-<<<<<<< javtesh_feature_UpdateProfileScreen
 				D326CBC32659317400B4B9EE /* TheUser.swift in Sources */,
-=======
 				911E54702659A53D008792F4 /* LocationController.swift in Sources */,
->>>>>>> master
 				914AE43B265557B300936E86 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
