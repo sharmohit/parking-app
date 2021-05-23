@@ -14,6 +14,8 @@
 import UIKit
 import FirebaseFirestore
 
+
+
 class SignUpViewController: UIViewController {
     
     let db = Firestore.firestore()
@@ -29,7 +31,6 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
         
         print("Viewing SignUp Screen")
-
        
     }
     
@@ -41,6 +42,7 @@ class SignUpViewController: UIViewController {
         let mobileNo = etMobileNumber.text
         let carPlateNo = etCarPlateNumber.text
         
+        
         if (name!.isEmpty || email!.isEmpty || pass!.isEmpty || mobileNo!.isEmpty || carPlateNo!.isEmpty) {
                     print("You must enter all required fields. ")
                     createAlert()
@@ -48,12 +50,18 @@ class SignUpViewController: UIViewController {
         
         else {
             
+            TheUser.userObject.name = name!
+            TheUser.userObject.email = email!
+            TheUser.userObject.pass = pass!
+            TheUser.userObject.mobileNo = mobileNo!
+            TheUser.userObject.carPlateNo = carPlateNo!
+            
             let userInfo = [
-                "Name" : name,
-                "Email" : email,
-                "Password" : pass,
-                "Mobile Number " : mobileNo,
-                "Car Plate Number" : carPlateNo
+                "name" : name,
+                "email" : email,
+                "password" : pass,
+                "phone" : mobileNo,
+                "car_plate_number" : carPlateNo
                     ]
             
             db.collection("users").addDocument(data: userInfo){ (error ) in
@@ -86,7 +94,7 @@ class SignUpViewController: UIViewController {
     }
     
     func movingToHomeScreen () {
-        print("Moving to screen 1")
+        print("Moving to HomeScreen")
         guard let s1 = storyboard?.instantiateViewController(identifier: "Home") as? HomeViewController else {
         print("Screen not found")
         return

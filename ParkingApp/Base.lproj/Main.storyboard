@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hK5-dO-ZE8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TCU-8z-tGa">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -13,7 +13,7 @@
             <objects>
                 <viewController storyboardIdentifier="createAccount" id="BYZ-38-t0r" customClass="SignUpViewController" customModule="ParkingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Aqx-1m-LIu">
@@ -122,13 +122,13 @@
         <!--Login View Controller-->
         <scene sceneID="xBF-uy-gCT">
             <objects>
-                <viewController id="TCU-8z-tGa" customClass="LoginViewController" customModule="ParkingApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="login" id="TCU-8z-tGa" customClass="LoginViewController" customModule="ParkingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="de1-GI-azS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CKa-la-rvx" userLabel="EmailTextField">
-                                <rect key="frame" x="47" y="275.66666666666669" width="281" height="34"/>
+                                <rect key="frame" x="47" y="319.66666666666669" width="281" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" textContentType="email"/>
                             </textField>
@@ -144,23 +144,23 @@
                                 </connections>
                             </button>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lE5-e3-6ox">
-                                <rect key="frame" x="47" y="383.66666666666669" width="51" height="31"/>
+                                <rect key="frame" x="47" y="427.66666666666669" width="51" height="31"/>
                                 <color key="onTintColor" systemColor="systemGreenColor"/>
                                 <color key="thumbTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stay logged in" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gkW-2n-Wn9">
-                                <rect key="frame" x="113" y="394.33333333333331" width="104" height="20"/>
+                                <rect key="frame" x="113" y="438.33333333333331" width="104" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hmS-Ai-KW8" userLabel="PasswordTextField">
-                                <rect key="frame" x="47" y="334.66666666666669" width="281" height="34"/>
+                                <rect key="frame" x="47" y="378.66666666666669" width="281" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="email"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PARKING" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sSG-yj-Wec">
-                                <rect key="frame" x="65" y="75" width="245" height="50.666666666666657"/>
+                                <rect key="frame" x="65" y="119.00000000000001" width="245" height="50.666666666666671"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="42"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -174,7 +174,7 @@
                                 </state>
                                 <connections>
                                     <action selector="createAccountWasTapped:" destination="TCU-8z-tGa" eventType="touchUpInside" id="wfd-ge-zka"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="U7S-1y-GSm"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="w3D-oP-5Kk"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -618,25 +618,6 @@
             </objects>
             <point key="canvasLocation" x="1418" y="822"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="2am-fb-712">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hK5-dO-ZE8" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Z0t-h1-pCY">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="TCU-8z-tGa" kind="relationship" relationship="rootViewController" id="BUP-CX-CxJ"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aak-LI-yMX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-866.39999999999998" y="77.58620689655173"/>
-        </scene>
-    </scenes>
     <resources>
         <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="location.viewfinder" catalog="system" width="128" height="115"/>

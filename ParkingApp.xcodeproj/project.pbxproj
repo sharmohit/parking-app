@@ -27,6 +27,7 @@
 		D31F8D472654129E00FF9F70 /* DetailScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31F8D462654129E00FF9F70 /* DetailScreenViewController.swift */; };
 		D326CBBC265794AD00B4B9EE /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D326CBBB265794AD00B4B9EE /* SignUpViewController.swift */; };
 		D326CBBE265796D700B4B9EE /* UpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D326CBBD265796D700B4B9EE /* UpdateViewController.swift */; };
+		D326CBC32659317400B4B9EE /* TheUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D326CBC22659317400B4B9EE /* TheUser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		D31F8D462654129E00FF9F70 /* DetailScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailScreenViewController.swift; sourceTree = "<group>"; };
 		D326CBBB265794AD00B4B9EE /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		D326CBBD265796D700B4B9EE /* UpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateViewController.swift; sourceTree = "<group>"; };
+		D326CBC22659317400B4B9EE /* TheUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheUser.swift; sourceTree = "<group>"; };
 		F1BCB8431BB673133269E6E1 /* Pods-ParkingApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParkingApp.debug.xcconfig"; path = "Target Support Files/Pods-ParkingApp/Pods-ParkingApp.debug.xcconfig"; sourceTree = "<group>"; };
 		F3E989DF966D49CA8B959A93 /* Pods-ParkingApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParkingApp.release.xcconfig"; path = "Target Support Files/Pods-ParkingApp/Pods-ParkingApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -88,7 +90,11 @@
 			isa = PBXGroup;
 			children = (
 				914AE43A265557B300936E86 /* User.swift */,
+<<<<<<< javtesh_feature_UpdateProfileScreen
+				D326CBC22659317400B4B9EE /* TheUser.swift */,
+=======
 				91FB7DD82659257F00275EBE /* Parking.swift */,
+>>>>>>> master
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -290,7 +296,11 @@
 				9191149B2653EF14009741CB /* HomeViewController.swift in Sources */,
 				9191149D2653F5D1009741CB /* ParkingTableViewController.swift in Sources */,
 				91708D45264D55E7009DEDC4 /* SceneDelegate.swift in Sources */,
+<<<<<<< javtesh_feature_UpdateProfileScreen
+				D326CBC32659317400B4B9EE /* TheUser.swift in Sources */,
+=======
 				911E54702659A53D008792F4 /* LocationController.swift in Sources */,
+>>>>>>> master
 				914AE43B265557B300936E86 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
