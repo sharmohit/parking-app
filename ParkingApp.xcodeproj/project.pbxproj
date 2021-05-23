@@ -22,6 +22,7 @@
 		9191149B2653EF14009741CB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9191149A2653EF14009741CB /* HomeViewController.swift */; };
 		9191149D2653F5D1009741CB /* ParkingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9191149C2653F5D1009741CB /* ParkingTableViewController.swift */; };
 		91CB9726264EC4DE0024B3D4 /* AddParkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CB9725264EC4DE0024B3D4 /* AddParkingViewController.swift */; };
+		91CC0EEF265A432000BDCEAE /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CC0EEE265A432000BDCEAE /* MapViewController.swift */; };
 		91FB7DD92659257F00275EBE /* Parking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FB7DD82659257F00275EBE /* Parking.swift */; };
 		91FB7DDB265942EE00275EBE /* AddParkingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FB7DDA265942EE00275EBE /* AddParkingController.swift */; };
 		D31F8D472654129E00FF9F70 /* DetailScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31F8D462654129E00FF9F70 /* DetailScreenViewController.swift */; };
@@ -47,6 +48,7 @@
 		9191149A2653EF14009741CB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		9191149C2653F5D1009741CB /* ParkingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingTableViewController.swift; sourceTree = "<group>"; };
 		91CB9725264EC4DE0024B3D4 /* AddParkingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddParkingViewController.swift; sourceTree = "<group>"; };
+		91CC0EEE265A432000BDCEAE /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		91FB7DD82659257F00275EBE /* Parking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parking.swift; sourceTree = "<group>"; };
 		91FB7DDA265942EE00275EBE /* AddParkingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddParkingController.swift; sourceTree = "<group>"; };
 		D31F8D462654129E00FF9F70 /* DetailScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailScreenViewController.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				9191149A2653EF14009741CB /* HomeViewController.swift */,
 				D326CBBD265796D700B4B9EE /* UpdateViewController.swift */,
 				9191149C2653F5D1009741CB /* ParkingTableViewController.swift */,
+				91CC0EEE265A432000BDCEAE /* MapViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				91708D45264D55E7009DEDC4 /* SceneDelegate.swift in Sources */,
 				911E54702659A53D008792F4 /* LocationController.swift in Sources */,
 				914AE43B265557B300936E86 /* User.swift in Sources */,
+				91CC0EEF265A432000BDCEAE /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

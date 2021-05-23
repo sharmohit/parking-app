@@ -14,9 +14,13 @@ import Foundation
 import CoreLocation
 import MapKit
 
-protocol LocationFetchDelegate {
-    func addressFetched()
-    func locationFetched()
+protocol LocationDataDelegate {
+    func locationDidChangeAddress()
+    func locationDidChangeLocation()
+}
+
+protocol LocationRouteDelegate {
+    func locationDidCalculateRoute(response:MKDirections.Response)
 }
 
 class LocationController {
@@ -24,7 +28,9 @@ class LocationController {
     private let locationManager = CLLocationManager()
     private let geocoder = CLGeocoder()
     
-    var delegate:LocationFetchDelegate?
+    var locationDataDelegate:LocationDataDelegate?
+    var locationRouteDelegate:LocationRouteDelegate?
+    
     var address:String
     var lat:Double
     var long:Double
@@ -52,10 +58,7 @@ class LocationController {
         }
     }
     
-    // MARK: - Forward GeoLocation
-    
-    //let postalAddress = "\(country), \(city), \(street)"
-    //self.getLocation(address: postalAddress)
+    // MARK: - GeoLocation
     
     func fetchLocationCoord(address : String){
         self.geocoder.geocodeAddressString(address, completionHandler: { (placemark, error) in
@@ -85,12 +88,10 @@ class LocationController {
                 print("No coordinates Found")
             }
         }
-        self.delegate?.locationFetched()
+        self.locationDataDelegate?.locationDidChangeLocation()
     }
     
     // MARK: - Reverse GeoLocation
-    
-    //self.getAddress(location : CLLocation(latitude: lat, longitude: lng))
     
     func fetchAddress(location : CLLocation) {
         self.geocoder.reverseGeocodeLocation(location, completionHandler: { (placemark, error) in
@@ -118,6 +119,25 @@ class LocationController {
                 print("No Address Found")
             }
         }
-        self.delegate?.addressFetched()
+        self.locationDataDelegate?.locationDidChangeLocation()
+    }
+    
+    // MARK: - Route
+    
+    func fetchRoute(pickupCoordinate: CLLocationCoordinate2D, destinationCoordinate: CLLocationCoordinate2D) {
+        
+        let request = MKDirections.Request()
+        request.source = MKMapItem(placemark: MKPlacemark(coordinate: pickupCoordinate, addressDictionary: nil))
+        request.destination = MKMapItem(placemark: MKPlacemark(coordinate: destinationCoordinate, addressDictionary: nil))
+        request.requestsAlternateRoutes = true
+        request.transportType = .walking
+        
+        let directions = MKDirections(request: request)
+        
+        directions.calculate { [unowned self] response, error in
+            guard let unwrappedResponse = response else { return }
+            
+            self.locationRouteDelegate?.locationDidCalculateRoute(response: unwrappedResponse)
+        }
     }
 }
