@@ -91,7 +91,7 @@ class LoginViewController: UIViewController, FirestoreFetchDelegate {
     func showAlert(title:String, message:String) {
         let alertController = UIAlertController(title: title, message:
                                                     message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Okay", style: .default))
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: .default))
         self.present(alertController, animated: true, completion: nil)
     }
 }

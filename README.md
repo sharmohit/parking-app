@@ -82,14 +82,17 @@ location on map and display the route to the parking location from the current l
 
 - [ ] 3. Create Add Parking Screen UI @sharmohit
   - [x] Design add parking screen
-  - [ ] Fetch and convert user location
-  - [ ] Validate user input
-  - [ ] Add parking with firestore
+  - [x] Fetch and convert user location
+  - [x] Validate user input
+  - [x] Add parking with firestore
 
 - [ ] 4. Create Update Profile Screen UI @JavteshGBC
   - [x] Design update profile screen
-  - [ ] Validate user input
-  - [ ] update user profile with firestore
+  - [x] Fetch user input
+  - [x] Validate user input
+  - [x] update user profile with firestore
+  - [x] Delete user profile
+  - [x] Logout user progile
   
 - [x] 5. Configure Firestore Console and Firebase in Project @sharmohit
   - [x] Create firebase app and configure firestore
@@ -117,4 +120,9 @@ location on map and display the route to the parking location from the current l
   - [ ] Home Screen
   - [ ] Add Parking
   - [ ] parking detail
+  
+- [x] 9. Add location service @sharmohit
+  - [x] Implement location controller
+  - [x] Implement reverse geocoding
+  - [x] Implement location geocoding
 ##
