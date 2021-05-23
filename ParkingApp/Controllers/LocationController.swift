@@ -119,7 +119,7 @@ class LocationController {
                 print("No Address Found")
             }
         }
-        self.locationDataDelegate?.locationDidChangeLocation()
+        self.locationDataDelegate?.locationDidChangeAddress()
     }
     
     // MARK: - Route
