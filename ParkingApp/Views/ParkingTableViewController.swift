@@ -73,7 +73,7 @@ class ParkingTableViewController: UITableViewController {
         
         let parkingDetailVC = parkingDetailNVC.viewControllers[0] as! DetailScreenViewController
         parkingDetailVC.parking = self.parkingList[indexPath.row]
-        parkingDetailNVC.modalPresentationStyle = .fullScreen
+        //parkingDetailNVC.modalPresentationStyle = .fullScreen
         show(parkingDetailNVC, sender: self)
     }
 }
