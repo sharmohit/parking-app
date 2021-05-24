@@ -31,13 +31,24 @@ class DetailScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(#function,"getDirection pressed")
+        
+        print("Parking info is : \(parking?.suitNumber), \(parking?.buildingCode), \(parking?.carPlateNumber)")
+        
+        lblBulidingCode.text = parking?.buildingCode
+        lblNumberOfHours.text = parking?.dateTime.description
+        lblSuitNumber.text = parking?.suitNumber.description
+        lblLocationOfCar.text = parking?.locLat.description
+        lblDateAndTime.text = parking?.dateTime.description
+        
 
         // Do any additional setup after loading the view.
     }
     
     @IBAction func getDirection(_ sender: Any) {
         
-        print(#function,"getDirection pressed")
+        
         
     }
     

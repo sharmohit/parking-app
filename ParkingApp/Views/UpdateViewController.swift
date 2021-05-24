@@ -129,7 +129,7 @@ class UpdateViewController: UIViewController {
         
         ]
         
-        db.collection("users").document(User.getInstance().id).setData(newUserInfo)
+        db.collection("users").document(User.getInstance().id!).setData(newUserInfo)
         print("Storing values to FireStore database...")
         print("***********************")
         print("new values are : ")
@@ -188,7 +188,7 @@ class UpdateViewController: UIViewController {
         refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
               print("USER DLETITION : CONFIRMED")
             
-            self.db.collection("users").document(User.getInstance().id).delete{ (error) in
+            self.db.collection("users").document(User.getInstance().id!).delete{ (error) in
                 if error != nil {
                     print("There was an error while deleting the user info")
                 }
