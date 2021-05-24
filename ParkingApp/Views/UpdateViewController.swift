@@ -145,6 +145,9 @@ class UpdateViewController: UIViewController {
         
         print("Logging Out ...")
         
+        UserDefaults.standard.set("", forKey:"email")
+        UserDefaults.standard.set("", forKey:"pass")
+
         User.getInstance().name = ""
         User.getInstance().email = ""
         User.getInstance().password = ""

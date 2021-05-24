@@ -12,13 +12,19 @@
 
 import Foundation
 
+public protocol LoginDelegate {
+    func loginDidSuccess()
+    func loginDidFailed(error:String)
+}
+
 class LoginController {
     
     private let defaults = UserDefaults.standard
+    var delegate:LoginDelegate?
     
-    var email:String
-    var password:String
-    var user = User.getInstance()
+    private var user = User.getInstance()
+    private var email:String
+    private var password:String
     
     init() {
         self.email = ""
@@ -32,17 +38,25 @@ class LoginController {
         if !email.isEmpty &&
             !password.isEmpty {
             fetchUser(id: email, password: password)
+            print(self.email,self.user.email,self.password,self.user.password)
         }
     }
     
     func fetchUser(id:String, password:String) {
         self.email = id
         self.password = password
-        self.user.fetchUserData(id: self.email)
+        self.user.fetchUser(id: self.email){
+            (error) in
+            
+            if let error = error {
+                self.delegate?.loginDidFailed(error: error)
+            } else {
+                self.delegate?.loginDidSuccess()
+            }
+        }
     }
     
     func login (isSaveLogin:Bool) -> Bool {
-        
         if self.user.password == self.password {
             if isSaveLogin {
                 defaults.set(self.email, forKey:"email")

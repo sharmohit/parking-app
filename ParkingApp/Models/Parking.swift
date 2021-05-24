@@ -17,7 +17,6 @@ import FirebaseFirestoreSwift
 struct Parking : Codable {
     
     private let db = Firestore.firestore()
-    var delegate:FirestoreFetchDelegate?
     
     @DocumentID var id:String?
     var buildingCode:String
@@ -28,19 +27,7 @@ struct Parking : Codable {
     var locLong:Double
     var dateTime:Timestamp
     
-    enum CodingKeys : String, CodingKey {
-        case buildingCode = "building_code"
-        case parkingHours = "parking_hours"
-        case carPlateNumber = "car_plate_number"
-        case suitNumber = "suit_number"
-        case locLat = "loc_lat"
-        case locLong = "loc_long"
-        case dateTime = "date_time"
-    }
-    
     init() {
-        self.delegate = nil
-        self.id = ""
         self.buildingCode = ""
         self.parkingHours = 0.0
         self.carPlateNumber = ""
@@ -48,6 +35,17 @@ struct Parking : Codable {
         self.locLat = 0.0
         self.locLong = 0.0
         self.dateTime = Timestamp()
+    }
+    
+    enum CodingKeys : String, CodingKey {
+        case id = "id"
+        case buildingCode = "building_code"
+        case parkingHours = "parking_hours"
+        case carPlateNumber = "car_plate_number"
+        case suitNumber = "suit_number"
+        case locLat = "loc_lat"
+        case locLong = "loc_long"
+        case dateTime = "date_time"
     }
     
     func encode(to encoder: Encoder) throws {
@@ -63,6 +61,7 @@ struct Parking : Codable {
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
+        self._id = try values.decode(DocumentID<String>.self, forKey: .id)
         self.buildingCode = try values.decode(String.self, forKey: .buildingCode)
         self.parkingHours = try values.decode(Double.self, forKey: .parkingHours)
         self.carPlateNumber = try values.decode(String.self, forKey: .carPlateNumber)
@@ -72,23 +71,66 @@ struct Parking : Codable {
         self.dateTime = try values.decode(Timestamp.self, forKey: .dateTime)
     }
     
-    func AddParkingData(parking:Parking) -> DocumentReference? {
+    func addParking(userID:String, parking:Parking){
         do {
-            let documentRef = try db.collection("parkings").addDocument(from : parking)
-            return documentRef
-            
+            try db.collection("users/\(userID)/parkings").addDocument(from : parking)
         } catch {
             print(error)
         }
-        return nil
     }
     
-    func mapUserParking(userID:String, parkingID:String) {
-        do {
-            try db.collection("users_parkings").addDocument(
-                data: ["email": userID, "parking_id": parkingID])
-        } catch {
-            print(error)
+    func getParkingByDocumentID(_ documentID:String, completion: @escaping (Parking) -> Void) {
+        db.collection("parkings").document(documentID).getDocument{
+            (queryResult, error) in
+            
+            if let error = error {
+                print("Error occured when fetching parking from firestore. Error: \(error)")
+                return
+            } else {
+                do {
+                    if let parking = try queryResult?.data(as : Parking.self) {
+                        completion(parking)
+                    } else {
+                        print("No parking found")
+                    }
+                } catch {
+                    print(error)
+                }
+            }
         }
     }
+    
+    func getUserParkings(userID:String, completion: @escaping ([Parking]?, String?) -> Void) {
+        db.collection("users/\(userID)/parkings").getDocuments(){
+            (queryResults, error) in
+            
+            if error != nil {
+                completion(nil,"An internal error occured")
+            } else if queryResults!.documents.count == 0 {
+                completion(nil, "No parkings added")
+            } else {
+                do {
+                    var parkingList:[Parking] = [Parking]()
+                    for result in queryResults!.documents {
+                        if let parking = try result.data(as : Parking.self) {
+                            parkingList.append(parking)
+                        }
+                    }
+                    completion(parkingList, nil)
+                } catch {
+                    print(error)
+                }
+            }
+        }
+    }
+    
+    /*
+     func mapUserParking(userID:String, parkingID:String) {
+     do {
+     try db.collection("users_parkings").addDocument(
+     data: ["email": userID, "parking_id": parkingID])
+     } catch {
+     print(error)
+     }
+     }*/
 }

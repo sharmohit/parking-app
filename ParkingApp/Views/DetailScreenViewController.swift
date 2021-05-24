@@ -27,6 +27,7 @@ class DetailScreenViewController: UIViewController {
     
     @IBOutlet weak var lblDateAndTime: UILabel!
     
+    var parking:Parking?
     
     override func viewDidLoad() {
         super.viewDidLoad()
