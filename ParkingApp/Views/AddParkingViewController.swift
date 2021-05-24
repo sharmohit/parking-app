@@ -30,52 +30,104 @@ class AddParkingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.locationController.initialize(delegate: self)
+        self.locationController.requestLocationAccess(delegate: self)
         self.plateNumberTextField.text = self.user.carPlateNumber
     }
     
     @IBAction func locateMeWasTapped(_ sender: UIButton) {
-        print(currentLocation!)
-        locationController.fetchAddress(
-            location:CLLocation(latitude: self.currentLocation?.latitude ?? 0.0,
-                                longitude: self.currentLocation?.longitude ?? 0.0)){
-            () in
-            self.locationTextField.text = self.locationController.address.getCompleteAddress()
+        
+        if let location = self.currentLocation {
+            locationController.fetchAddress(
+                location:CLLocation(latitude: location.latitude,
+                                    longitude: location.longitude)){
+                (errorMsg) in
+                if let error = errorMsg {
+                    self.showAlert(title: "Error", message: error)
+                }else {
+                    self.locationTextField.text = self.locationController.address.getCompleteAddress()
+                }
+            }
+        } else {
+            if CLLocationManager.locationServicesEnabled() {
+                showAlert(title: "Error", message: "Unable to get location")
+            } else {
+                locationController.requestLocationAccess(delegate: self)
+            }
+            
         }
     }
     
     @IBAction func addParkingWasTapped(_ sender: UIButton) {
         
-        let address = self.locationTextField.text!
-        if address.isEmpty {
-            showAlert(title: "Error", message: "Parking location is empty")
-        } else {
-            self.locationController.fetchLocationCoord(address: address){
-                () in
-                self.addParking(lat: self.locationController.lat,
-                           long: self.locationController.long)
+        let errorMsg = validateParking()
+        
+        if errorMsg.isEmpty {
+            self.locationController.fetchLocationCoord(address: self.locationTextField.text!){
+                (errorMsg) in
+                if let error = errorMsg {
+                    self.showAlert(title: "Error", message: error)
+                }else {
+                    self.addParking(lat: self.locationController.lat,
+                                    long: self.locationController.long)
+                }
             }
+        } else {
+            showAlert(title: "Error", message: errorMsg)
+        }
+    }
+    
+    private func validateParking() -> String {
+        
+        if self.buildingCodeTextField.text!.isEmpty {
+            return "Building code is empty"
+        } else if self.buildingCodeTextField.text!.count != 5 {
+            return "Building Code must have 5 alphanumeric characters"
+        } else if hoursSegment.selectedSegmentIndex < 0 {
+            return "Please select parking hours"
+        } else if self.plateNumberTextField.text!.isEmpty {
+            return "Car plate number is empty"
+        } else if self.plateNumberTextField.text!.count > 8 {
+            return "Maximum 8 alphanumeric characters allowed for Car Plate Number"
+        } else if self.plateNumberTextField.text!.count < 2 {
+            return "Minimum 2 alphanumeric characters required for Car Plate Number"
+        } else if self.suitNumberTextField.text!.isEmpty {
+            return "Suit number is empty"
+        } else if self.suitNumberTextField.text!.count > 5 {
+            return "Maximum 8 alphanumeric characters allowed for Suit Number"
+        } else if self.suitNumberTextField.text!.count < 2 {
+            return "Minimum 2 alphanumeric characters required for Suit Number"
+        } else if self.locationTextField.text!.isEmpty {
+            return "Please provide parking location"
+        } else {
+            return ""
         }
     }
     
     private func addParking(lat:Double, long:Double) {
-        let errorMsg = self.addParkingController.addParking(
-            userID: self.user.id!,
-            buildingCode: buildingCodeTextField.text!,
-            parkingHours: getHourFromSegmentIndex(segmentIndex: hoursSegment.selectedSegmentIndex),
-            carPlateNumber: plateNumberTextField.text!,
-            suitNumber: Int(suitNumberTextField.text!) ?? 0,
-            lat: lat, long: long)
         
-        if !errorMsg.isEmpty {
-            showAlert(title: "Error", message: errorMsg)
+        self.addParkingController.addParking(
+            userID: self.user.id!,
+            buildingCode: self.buildingCodeTextField.text!,
+            parkingHours: self.getHourFromSegmentIndex(segmentIndex: self.hoursSegment.selectedSegmentIndex),
+            carPlateNumber: self.plateNumberTextField.text!,
+            suitNumber: Int(self.suitNumberTextField.text!) ?? 0,
+            lat: lat, long: long){
+            (error) in
+            
+            if let error = error {
+                self.showAlert(title: "Error", message: error)
+            } else {
+                self.self.showAlert(title: "Success", message: "Parking added succesfully")
+                self.clearInputs()
+            }
         }
-        self.clearInputs()
     }
     
     private func clearInputs() {
         buildingCodeTextField.text = ""
-        suitNumberTextField.text = user.carPlateNumber
+        hoursSegment.selectedSegmentIndex = -1
+        plateNumberTextField.text = user.carPlateNumber
+        suitNumberTextField.text = ""
         locationTextField.text = ""
     }
     
@@ -107,13 +159,9 @@ extension AddParkingViewController : CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         self.currentLocation = manager.location?.coordinate
-        
-        if self.currentLocation == nil {
-            self.showAlert(title: "Error", message: "Unable to get location.")
-        }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(#function, "Unable to get location \(error)")
+        print(#function, "Unable to get location \(error) Permission \(CLLocationManager.locationServicesEnabled())")
     }
 }

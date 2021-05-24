@@ -38,7 +38,6 @@ class LoginController {
         if !email.isEmpty &&
             !password.isEmpty {
             fetchUser(id: email, password: password)
-            print(self.email,self.user.email,self.password,self.user.password)
         }
     }
     

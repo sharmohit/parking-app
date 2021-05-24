@@ -13,9 +13,8 @@
 import UIKit
 
 class ParkingTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var locationLabel: UILabel!
+    
+    @IBOutlet weak var carPlateLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var hoursLabel: UILabel!
     
@@ -29,5 +28,15 @@ class ParkingTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
+    func setParkingHour(hour:Int) {
+        
+        let text = "Parked for"
+        
+        if hour > 1 {
+            self.hoursLabel.text = "\(text) \(hour) hrs"
+        } else {
+            self.hoursLabel.text = "\(text) \(hour) hr"
+        }
+    }
 }

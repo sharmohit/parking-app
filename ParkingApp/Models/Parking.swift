@@ -67,13 +67,20 @@ struct Parking : Codable {
         self.carPlateNumber = try values.decode(String.self, forKey: .carPlateNumber)
         self.suitNumber = try values.decode(Int.self, forKey: .suitNumber)
         self.locLat = try values.decode(Double.self, forKey: .locLat)
-        self.locLong = try values.decode(Double.self, forKey: .locLat)
+        self.locLong = try values.decode(Double.self, forKey: .locLong)
         self.dateTime = try values.decode(Timestamp.self, forKey: .dateTime)
     }
     
-    func addParking(userID:String, parking:Parking){
+    func addParking(userID:String, parking:Parking, completion: @escaping (String?) -> Void ){
         do {
-            try db.collection("users/\(userID)/parkings").addDocument(from : parking)
+            try db.collection("users/\(userID)/parkings").addDocument(from : parking){
+                (error) in
+                if let error = error {
+                    completion("Unable to add parking. Please Try again")
+                } else {
+                    completion(nil)
+                }
+            }
         } catch {
             print(error)
         }
@@ -101,7 +108,7 @@ struct Parking : Codable {
     }
     
     func getUserParkings(userID:String, completion: @escaping ([Parking]?, String?) -> Void) {
-        db.collection("users/\(userID)/parkings").getDocuments(){
+        db.collection("users/\(userID)/parkings").order(by: "date_time", descending: true).getDocuments(){
             (queryResults, error) in
             
             if error != nil {
