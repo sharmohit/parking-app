@@ -50,11 +50,13 @@ class SignUpViewController: UIViewController {
         
         else {
             
-            TheUser.userObject.name = name!
-            TheUser.userObject.email = email!
-            TheUser.userObject.pass = pass!
-            TheUser.userObject.mobileNo = mobileNo!
-            TheUser.userObject.carPlateNo = carPlateNo!
+            print("Setting all values in User file")
+            
+            User.getInstance().name = name!
+            User.getInstance().email = email!
+            User.getInstance().password = pass!
+            User.getInstance().phone = mobileNo!
+            User.getInstance().carPlateNumber = carPlateNo!
             
             let userInfo = [
                 "name" : name,
@@ -66,22 +68,19 @@ class SignUpViewController: UIViewController {
             
             db.collection("users").addDocument(data: userInfo){ (error ) in
                 
+                print("Uploading user info to the firestore ... ")
+                
                 if let err = error{
                     print("error when saving documnet")
                     print(err)
                     return
                 }
                 else {
-                    print("Data saved successfully")
-                    self.etName.text = ""
-                    self.etEmail.text = ""
-                    self.etPassword.text = ""
-                    self.etMobileNumber.text = ""
-                    self.etCarPlateNumber.text = ""
+                    print("User info saved successfully to the fireStore.")
+                    self.movingToHomeScreen()
                 }
                 
             }
-            movingToHomeScreen()
         }
     }
         

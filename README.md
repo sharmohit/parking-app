@@ -80,7 +80,7 @@ location on map and display the route to the parking location from the current l
   - [x] Create user account with firestore
   - [x] Link sign-in and home screens
 
-- [ ] 3. Create Add Parking Screen UI @sharmohit
+- [x] 3. Create Add Parking Screen UI @sharmohit
   - [x] Design add parking screen
   - [x] Fetch and convert user location
   - [x] Validate user input
@@ -109,9 +109,9 @@ location on map and display the route to the parking location from the current l
   - [x] Design home and parking view screen
   - [x] Create tabbed home screen
   - [x] Link navigation controller with view/add parking and profile screen, 
-  - [ ] Implement table view for view parking screen
-  - [ ] fetch user parking from firestore
-  - [ ] Link home and parking detail view screens
+  - [x] Implement table view for view parking screen
+  - [x] fetch user parking from firestore
+  - [x] Link home and parking detail view screens
 
 - [ ] 8. Design Final UI with illustrations for all UI Screens @JavteshGBC
   - [x] SignUp Screen

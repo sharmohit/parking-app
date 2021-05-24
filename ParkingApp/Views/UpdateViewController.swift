@@ -17,7 +17,7 @@ import FirebaseFirestore
 class UpdateViewController: UIViewController {
     
     let db = Firestore.firestore()
-    var theEmail = TheUser.userObject.email
+    var theEmail = User.getInstance().email
     
     @IBOutlet weak var utName: UITextField!
     @IBOutlet weak var utEmail: UITextField!
@@ -68,7 +68,7 @@ class UpdateViewController: UIViewController {
                         for result in queryResults!.documents {
                             print(result.documentID)
                             
-                            TheUser.userObject.id = result.documentID
+                            User.getInstance().id = result.documentID
                             // print the data
                              print(result.data())
                             let row = result.data()
@@ -109,11 +109,13 @@ class UpdateViewController: UIViewController {
         userMobileNumber = utMobileNumber.text ?? ""
         userCarPlateNumber = utCarPlateNumber.text ?? ""
         
-        TheUser.userObject.name = userName
-        TheUser.userObject.email = userEmail
-        TheUser.userObject.pass = userPassword
-        TheUser.userObject.mobileNo = userMobileNumber
-        TheUser.userObject.carPlateNo = userCarPlateNumber
+        print("Updating the values in user class...")
+        
+        User.getInstance().name = userName
+        User.getInstance().email = userEmail
+        User.getInstance().password = userPassword
+        User.getInstance().phone = userMobileNumber
+        User.getInstance().carPlateNumber = userCarPlateNumber
         
         
         
@@ -127,11 +129,12 @@ class UpdateViewController: UIViewController {
         
         ]
         
-        db.collection("users").document(TheUser.userObject.id).setData(newUserInfo)
+        db.collection("users").document(User.getInstance().id).setData(newUserInfo)
+        print("Storing values to FireStore database...")
         print("***********************")
         print("new values are : ")
         print("\(userName), \(userEmail),\(userPassword),\(userMobileNumber),\(userCarPlateNumber)")
-        print("Data Saved")
+        print("Data Saved To FireStore Database")
         
     }
     
@@ -142,16 +145,16 @@ class UpdateViewController: UIViewController {
         
         print("Logging Out ...")
         
-        TheUser.userObject.name = ""
-        TheUser.userObject.email = ""
-        TheUser.userObject.pass = ""
-        TheUser.userObject.mobileNo = ""
-        TheUser.userObject.carPlateNo = ""
-        TheUser.userObject.id = ""
-        
         UserDefaults.standard.set("", forKey:"email")
         UserDefaults.standard.set("", forKey:"pass")
+
+        User.getInstance().name = ""
+        User.getInstance().email = ""
+        User.getInstance().password = ""
+        User.getInstance().phone = ""
+        User.getInstance().carPlateNumber = ""
         
+        self.resetDefaults()
         movingToLoginScreen()
         
     }
@@ -185,11 +188,16 @@ class UpdateViewController: UIViewController {
         refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
               print("USER DLETITION : CONFIRMED")
             
-            self.db.collection("users").document(TheUser.userObject.id).delete{ (error) in
+            self.db.collection("users").document(User.getInstance().id).delete{ (error) in
                 if error != nil {
                     print("There was an error while deleting the user info")
                 }
                 else{
+                    print("user Deleted")
+                    print("Deleting user email and password from defaults ...")
+                    self.resetDefaults()
+                    print("User defaults deleted.")
+                    print("Deleting User info from server...")
                     print("user Deleted")
                     self.movingToLoginScreen()
                 }
@@ -201,6 +209,14 @@ class UpdateViewController: UIViewController {
         }))
 
         present(refreshAlert, animated: true, completion: nil)
+    }
+    
+    func resetDefaults() {
+        let defaults = UserDefaults.standard
+        let dictionary = defaults.dictionaryRepresentation()
+        dictionary.keys.forEach { key in
+            defaults.removeObject(forKey: key)
+        }
     }
 }
     

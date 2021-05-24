@@ -36,6 +36,7 @@ class User : Codable {
     var carPlateNumber:String
     
     init() {
+        self.id = ""
         self.email = ""
         self.name = ""
         self.password = ""
