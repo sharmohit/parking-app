@@ -32,6 +32,7 @@ class User {
     private let db = Firestore.firestore()
     var delegate:FirestoreFetchDelegate?
     
+    var id:String
     var email:String
     var name:String
     var password:String
@@ -39,6 +40,7 @@ class User {
     var carPlateNumber:String
     
     init() {
+        self.id = ""
         self.email = ""
         self.name = ""
         self.password = ""
