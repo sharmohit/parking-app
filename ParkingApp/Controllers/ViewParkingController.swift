@@ -31,7 +31,6 @@ class ViewParkingController {
     func fetchUserParkings(userID:String, completion: @escaping ([Parking]?, String?) -> Void) {
         self.parking.getUserParkings(userID: userID){
             (parkingList, error) in
-            print("Parking Count: \(parkingList!.count)")
             completion(parkingList, error)
         }
     }

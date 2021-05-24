@@ -52,10 +52,9 @@ class LocationController {
         self.long = 0.0
     }
     
-    func initialize(delegate:CLLocationManagerDelegate?) {
+    func requestLocationAccess(delegate:CLLocationManagerDelegate?) {
         
         self.locationManager.requestWhenInUseAuthorization()
-        self.locationManager.requestAlwaysAuthorization()
         
         if CLLocationManager.locationServicesEnabled() {
             print("Location access granted")
@@ -71,22 +70,23 @@ class LocationController {
     
     // MARK: - GeoLocation
     
-    func fetchLocationCoord(address : String, completionHandler: @escaping ()->Void){
+    func fetchLocationCoord(address : String, completionHandler: @escaping (String?)->Void){
         self.geocoder.geocodeAddressString(address, completionHandler: { (placemark, error) in
             self.processCoordGeoResponse(placemarks: placemark, error: error){
-                () in
-                completionHandler()
+                (errorMsg) in
+                completionHandler(errorMsg)
             }
         })
     }
     
-    private func processCoordGeoResponse(placemarks: [CLPlacemark]?, error: Error?, completionHandler: @escaping ()->Void) {
+    private func processCoordGeoResponse(placemarks: [CLPlacemark]?, error: Error?, completionHandler: @escaping (String?)->Void) {
         
         self.lat = 0.0
         self.long = 0.0
         
         if error != nil {
-            print("Unable to get location coordinates")
+            print("Unable to get location coordinates. Error: \(error!)")
+            completionHandler("Unable to find parking location")
         } else {
             var obtainedLocation : CLLocation?
             
@@ -98,27 +98,30 @@ class LocationController {
                 print("lat \(obtainedLocation!.coordinate.latitude) , lng \(obtainedLocation!.coordinate.longitude)")
                 self.lat = obtainedLocation!.coordinate.latitude
                 self.long = obtainedLocation!.coordinate.longitude
-                completionHandler()
+                completionHandler(nil)
             } else {
                 print("No coordinates Found")
+                completionHandler("No parking location found")
             }
         }
     }
     
     // MARK: - Reverse GeoLocation
     
-    func fetchAddress(location : CLLocation, completionHandler: @escaping ()->Void) {
+    func fetchAddress(location : CLLocation, completionHandler: @escaping (String?)->Void) {
         self.geocoder.reverseGeocodeLocation(location, completionHandler: { (placemark, error) in
-            self.processReverseGeoResponse(placemarkList: placemark, error: error){() in
-                completionHandler()
+            self.processReverseGeoResponse(placemarkList: placemark, error: error){
+                (errorMsg) in
+                completionHandler(errorMsg)
             }
         })
     }
     
-    private func processReverseGeoResponse(placemarkList : [CLPlacemark]?, error : Error?, completionHandler: @escaping ()->Void) {
+    private func processReverseGeoResponse(placemarkList : [CLPlacemark]?, error : Error?, completionHandler: @escaping (String?)->Void) {
 
         if error != nil {
             print("Unable to get address")
+            completionHandler("Unable to find address")
         } else {
             if let placemarks = placemarkList, let placemark = placemarks.first {
                 
@@ -132,17 +135,18 @@ class LocationController {
                 self.address.province = "\(province)"
                 self.address.country = "\(country)"
                 print(self.address.getCompleteAddress())
-                completionHandler()
+                completionHandler(nil)
                 
             } else {
                 print("No Address Found")
+                completionHandler("No address found")
             }
         }
     }
     
     // MARK: - Route
     
-    func fetchRoute(pickupCoordinate: CLLocationCoordinate2D, destinationCoordinate: CLLocationCoordinate2D, completionHandler: @escaping (MKDirections.Response)->Void) {
+    func fetchRoute(pickupCoordinate: CLLocationCoordinate2D, destinationCoordinate: CLLocationCoordinate2D, completionHandler: @escaping (MKDirections.Response?)->Void) {
         
         let request = MKDirections.Request()
         request.source = MKMapItem(placemark: MKPlacemark(coordinate: pickupCoordinate, addressDictionary: nil))
@@ -153,7 +157,10 @@ class LocationController {
         let directions = MKDirections(request: request)
         
         directions.calculate { response, error in
-            guard let unwrappedResponse = response else { return }
+            guard let unwrappedResponse = response else {
+                completionHandler(nil)
+                return
+            }
             
             completionHandler(unwrappedResponse)
         }

@@ -24,6 +24,7 @@ class ParkingTableViewController: UITableViewController {
         super.viewDidLoad()
         
         self.formatter.dateStyle = .medium
+        self.formatter.timeStyle = .medium
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -58,14 +59,9 @@ class ParkingTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ParkingCell", for: indexPath) as! ParkingTableViewCell
         
         let parking = self.parkingList[indexPath.row]
-        cell.titleLabel.text = "Parking \(indexPath.row + 1)"
-        let locationController = LocationController()
-        locationController.fetchAddress(location: CLLocation(latitude: parking.locLat, longitude: parking.locLong)){
-            () in
-            cell.locationLabel.text = locationController.address.getCompleteAddress()
-        }
-        cell.dateLabel.text = formatter.string(from: parking.dateTime.dateValue())
-        cell.hoursLabel.text = "\(parking.parkingHours) hrs"
+        cell.carPlateLabel.text = parking.carPlateNumber.uppercased()
+        cell.dateLabel.text = "Added on \(formatter.string(from: parking.dateTime.dateValue()))"
+        cell.setParkingHour(hour:Int(parking.parkingHours))
         return cell
     }
     
