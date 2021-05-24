@@ -314,6 +314,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" textContentType="tel"/>
                             </textField>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="zfQ-aD-NoA" userLabel="LocationActivityIndicator">
+                                <rect key="frame" x="156" y="370" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8MS-nS-BD7"/>
                         <color key="backgroundColor" systemColor="systemBlueColor"/>
@@ -322,6 +326,8 @@
                     <connections>
                         <outlet property="buildingCodeTextField" destination="2rp-zj-Gw2" id="JzH-fV-m6G"/>
                         <outlet property="hoursSegment" destination="dqp-Hg-5bn" id="W1j-D2-EwO"/>
+                        <outlet property="locateMeButton" destination="Yzq-yA-Jjr" id="MKA-SO-rrL"/>
+                        <outlet property="locationActivityIndicator" destination="zfQ-aD-NoA" id="asq-MB-bNw"/>
                         <outlet property="locationTextField" destination="MNx-Lf-zBW" id="meB-t9-oJv"/>
                         <outlet property="plateNumberTextField" destination="QaX-Vc-7hv" id="D4O-IZ-AjG"/>
                         <outlet property="suitNumberTextField" destination="gK7-f1-UW5" id="REY-Dq-Igd"/>

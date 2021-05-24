@@ -46,22 +46,33 @@ class LocationController {
     var lat:Double
     var long:Double
     
+    var delegate:CLLocationManagerDelegate? {
+        get {
+            return self.locationManager.delegate
+        }
+        
+        set {
+            self.locationManager.delegate = newValue
+        }
+    }
+    
     init() {
         self.address = Address()
         self.lat = 0.0
         self.long = 0.0
     }
     
-    func requestLocationAccess(delegate:CLLocationManagerDelegate?) {
+    func requestLocationAccess(requireContinuousUpdate:Bool) {
         
         self.locationManager.requestWhenInUseAuthorization()
         
         if CLLocationManager.locationServicesEnabled() {
             print("Location access granted")
             
-            self.locationManager.delegate = delegate
             self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
-            self.locationManager.startUpdatingLocation()
+            requireContinuousUpdate ?
+                self.locationManager.startUpdatingLocation() :
+                self.locationManager.requestLocation()
             
         } else {
             print("Location access denied")
@@ -146,13 +157,13 @@ class LocationController {
     
     // MARK: - Route
     
-    func fetchRoute(pickupCoordinate: CLLocationCoordinate2D, destinationCoordinate: CLLocationCoordinate2D, completionHandler: @escaping (MKDirections.Response?)->Void) {
+    func fetchRoute(sourceCoordinate: CLLocationCoordinate2D, destinationCoordinate: CLLocationCoordinate2D, completionHandler: @escaping (MKDirections.Response?)->Void) {
         
         let request = MKDirections.Request()
-        request.source = MKMapItem(placemark: MKPlacemark(coordinate: pickupCoordinate, addressDictionary: nil))
+        request.source = MKMapItem(placemark: MKPlacemark(coordinate: sourceCoordinate, addressDictionary: nil))
         request.destination = MKMapItem(placemark: MKPlacemark(coordinate: destinationCoordinate, addressDictionary: nil))
-        request.requestsAlternateRoutes = true
-        request.transportType = .walking
+        //request.requestsAlternateRoutes = true
+        request.transportType = .automobile
         
         let directions = MKDirections(request: request)
         
