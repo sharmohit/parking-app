@@ -105,7 +105,7 @@ location on map and display the route to the parking location from the current l
   - [ ] Fetch parking detail from firestore
   - [ ] Display parking detail
 
-- [ ] 7. Create Home and Parking View Screen UI @sharmohit
+- [x] 7. Create Home and Parking View Screen UI @sharmohit
   - [x] Design home and parking view screen
   - [x] Create tabbed home screen
   - [x] Link navigation controller with view/add parking and profile screen, 
