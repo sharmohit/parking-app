@@ -39,7 +39,7 @@ class DetailScreenViewController: UIViewController {
         lblBulidingCode.text = parking?.buildingCode
         lblNumberOfHours.text = parking?.dateTime.description
         lblSuitNumber.text = parking?.suitNumber.description
-        lblLocationOfCar.text = parking?.locLat.description
+        lblLocationOfCar.text = parking?.coordinate.latitude.description
         lblDateAndTime.text = parking?.dateTime.description
         
 

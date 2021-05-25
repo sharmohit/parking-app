@@ -104,6 +104,7 @@ class AddParkingViewController: UIViewController {
             parkingHours: self.getHourFromSegmentIndex(segmentIndex: self.hoursSegment.selectedSegmentIndex),
             carPlateNumber: self.plateNumberTextField.text!,
             suitNumber: Int(self.suitNumberTextField.text!) ?? 0,
+            address: self.locationTextField.text!,
             lat: lat, long: long){
             (error) in
             
