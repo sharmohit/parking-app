@@ -19,8 +19,6 @@ class DetailScreenViewController: UIViewController {
     private let formatter = DateFormatter()
     
     
-
-    
     @IBOutlet weak var lblBulidingCode: UILabel!
     
     
@@ -63,16 +61,38 @@ class DetailScreenViewController: UIViewController {
         
         print("\tLatitiude is \(lat)")
         print("\tLongitude is \(long)")
-        
-        
 
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func getDirection(_ sender: Any) {
         
         print(#function,"getDirection pressed")
         
+        guard let s2 = storyboard?.instantiateViewController(identifier: "mapView") as? MapViewController
+                else {
+                    print("cannot find secon screen")
+                    return
+                }
+                
+//        s2.latitudeSent = parking!.locLat
+//        s2.longitudeSent = parking!.locLong
+        
+        show(s2, sender: self)
+        
     }
+    
+    @IBAction func backButton(_ sender: Any) {
+        
+        print("Moving to View ParkingScreen")
+        guard let s1 = storyboard?.instantiateViewController(identifier: "Home") as? HomeViewController else {
+        print("Screen not found")
+        return
+        }
+        
+        s1.modalPresentationStyle = .fullScreen
+        self.present(s1, animated: true)
+        
+    }
+    
     
 }

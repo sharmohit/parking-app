@@ -37,7 +37,7 @@ class ParkingTableViewController: UITableViewController {
                 print("Error View Parking: \(error!)")
             } else if parkingList != nil {
                 self.parkingList.append(contentsOf: parkingList!)
-                self.tableView.rowHeight = 80
+                self.tableView.rowHeight = 100
                 self.tableView.reloadData()
             }
         }
