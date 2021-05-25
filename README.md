@@ -94,13 +94,13 @@ location on map and display the route to the parking location from the current l
   - [x] Validate user input
   - [x] Add parking with firestore
 
-- [ ] 4. Create Update Profile Screen UI @JavteshSinghBhullar(101348129)
+- [x] 4. Create Update Profile Screen UI @JavteshSinghBhullar(101348129)
   - [x] Design update profile screen
   - [x] Fetch user input
   - [x] Validate user input
   - [x] update user profile with firestore
   - [x] Delete user profile
-  - [x] Logout user progile
+  - [x] Logout user profile
   
 - [x] 5. Configure Firestore Console and Firebase in Project @Mohit Sharma(101342267)
   - [x] Create firebase app and configure firestore
@@ -108,10 +108,10 @@ location on map and display the route to the parking location from the current l
   - [x] Configure firebase and install pods in Xcode project 
   - [x] Test firestore with test data
 
-- [ ] 6. Create Parking Detail View Screen UI @JavteshSinghBhullar(101348129)
+- [x] 6. Create Parking Detail View Screen UI @JavteshSinghBhullar(101348129)
   - [x] Design parking detail view screen
-  - [ ] Fetch parking detail from firestore
-  - [ ] Display parking detail
+  - [x] Fetch parking detail from firestore
+  - [x] Display parking detail
 
 - [x] 7. Create Home and Parking View Screen UI @Mohit Sharma(101342267)
   - [x] Design home and parking view screen
@@ -121,13 +121,13 @@ location on map and display the route to the parking location from the current l
   - [x] fetch user parking from firestore
   - [x] Link home and parking detail view screens
 
-- [ ] 8. Design Final UI with illustrations for all UI Screens @JavteshSinghBhullar(101348129)
+- [x] 8. Design Final UI with illustrations for all UI Screens @JavteshSinghBhullar(101348129)
   - [x] SignUp Screen
   - [x] Update Screen
-  - [ ] Login Screen
-  - [ ] Home Screen
-  - [ ] Add Parking
-  - [ ] parking detail
+  - [x] Login Screen
+  - [x] Home Screen
+  - [x] Add Parking
+  - [x] parking detail
   
 - [x] 9. Add location service @Mohit Sharma(101342267)
   - [x] Create MapView Screen 
