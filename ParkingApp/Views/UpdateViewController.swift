@@ -39,62 +39,22 @@ class UpdateViewController: UIViewController {
         
         print("Update screen loaded ...")
         
-        fetchingUserInfo()
+        setUserData()
 
         // Do any additional setup after loading the view.
     }
     
     
-    func fetchingUserInfo(){
-        print("Fetching user info")
-  
-            db.collection("users").whereField("email", isEqualTo: theEmail)
-                .getDocuments { queryResults, error in
-                
-                if let err = error {
-                    print("Error getting documents from student collection")
-                    print(err)
-                    return
-                    
-                }
-                
-                else {
-                    // we were successful in getting the docs.
-                    if (queryResults!.count == 0){
-                        print("No results found")
-                    }
-                    else {
-                        // we found some results
-                        for result in queryResults!.documents {
-                            print(result.documentID)
-                            
-                            User.getInstance().id = result.documentID
-                            // print the data
-                             print(result.data())
-                            let row = result.data()
-                            print(row["name"]!)
-                            
-                            self.userName = row["name"] as? String ?? "Name not available"
-                            self.userEmail = row["email"] as? String ?? "Email not available"
-                            self.userPassword = row["password"] as? String ?? "Password not available"
-                            self.userMobileNumber = row["phone"] as? String ?? "Phone not available"
-                            self.userCarPlateNumber = row["car_plate_number"] as? String ?? "car Plate not available"
-                                                        
-                            self.setUserData()
-                        }
-                    }
-                }
-            }
-    }
     
     func setUserData(){
         
+        print("Fetching user info")
         
-        utName.text = userName
-        utEmail.text = userEmail
-        utPassword.text = userPassword
-        utMobileNumber.text = userMobileNumber
-        utCarPlateNumber.text = userCarPlateNumber
+        utName.text = User.getInstance().name
+        utEmail.text = User.getInstance().email
+        utPassword.text = User.getInstance().password
+        utMobileNumber.text = User.getInstance().phone
+        utCarPlateNumber.text = User.getInstance().carPlateNumber
         
         
     }
@@ -109,7 +69,26 @@ class UpdateViewController: UIViewController {
         userMobileNumber = utMobileNumber.text ?? ""
         userCarPlateNumber = utCarPlateNumber.text ?? ""
         
+        
+        if (userName.isEmpty || userEmail.isEmpty || userPassword.isEmpty || userMobileNumber.isEmpty || userCarPlateNumber.isEmpty) {
+                    let errorEmpty = "You must enter all required fields. "
+                    createAlert(errorName: errorEmpty)
+                }
+        else if ((userEmail.isValidEmail) == false){
+            let errorEmail = "Email ID is invalid"
+            createAlert(errorName: errorEmail)
+        }
+        
+        else if userCarPlateNumber.count != 5 {
+            let errorCarPlate = "Please enter valid 5 digit Car Plate Number"
+            createAlert(errorName: errorCarPlate)
+        }
+        
+        else {
+        
         print("Updating the values in user class...")
+        
+        
         
         User.getInstance().name = userName
         User.getInstance().email = userEmail
@@ -135,6 +114,16 @@ class UpdateViewController: UIViewController {
         print("new values are : ")
         print("\(userName), \(userEmail),\(userPassword),\(userMobileNumber),\(userCarPlateNumber)")
         print("Data Saved To FireStore Database")
+        
+    }
+}
+    
+    func createAlert(errorName:String) {
+        let alert = UIAlertController(title: "Error", message: errorName, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: " OK ", style: .cancel, handler: {
+                                        action in print("tapped OK")}) )
+        present(alert,animated: true)
         
     }
     

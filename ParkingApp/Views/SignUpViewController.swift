@@ -19,6 +19,7 @@ import FirebaseFirestore
 class SignUpViewController: UIViewController {
     
     let db = Firestore.firestore()
+    var theEmail = ""
     
     @IBOutlet weak var etName: UITextField!
     @IBOutlet weak var etEmail: UITextField!
@@ -41,14 +42,27 @@ class SignUpViewController: UIViewController {
         let pass = etPassword.text
         let mobileNo = etMobileNumber.text
         let carPlateNo = etCarPlateNumber.text
+        let id = ""
         
         
         if (name!.isEmpty || email!.isEmpty || pass!.isEmpty || mobileNo!.isEmpty || carPlateNo!.isEmpty) {
-                    print("You must enter all required fields. ")
-                    createAlert()
+                    let errorEmpty = "You must enter all required fields. "
+                    createAlert(errorName: errorEmpty)
                 }
+        else if ((email?.isValidEmail) == false){
+            let errorEmail = "Email ID is invalid"
+            createAlert(errorName: errorEmail)
+        }
+        
+        else if carPlateNo?.count != 5 {
+            let errorCarPlate = "Please enter valid 5 digit Car Plate Number"
+            createAlert(errorName: errorCarPlate)
+        }
         
         else {
+            
+            
+            theEmail = email!
             
             print("Setting all values in User file")
             
@@ -77,15 +91,44 @@ class SignUpViewController: UIViewController {
                 }
                 else {
                     print("User info saved successfully to the fireStore.")
+                    self.getId()
                     self.movingToHomeScreen()
                 }
                 
             }
         }
     }
+    
+    
+    func getId(){
+        db.collection("users").whereField("email", isEqualTo: theEmail)
+            .getDocuments { queryResults, error in
+            
+            if let err = error {
+                print("Error getting documents from student collection")
+                print(err)
+                return
+                
+            }
+            
+            else {
+                // we were successful in getting the docs.
+                if (queryResults!.count == 0){
+                    print("No results found")
+                }
+                else {
+                    // we found some results
+                    for result in queryResults!.documents {
+                        print("We got id of document as : \(result.documentID)")
+                        User.getInstance().id = result.documentID
+    }
+}
+            }
+            }
+    }
         
-    func createAlert() {
-        let alert = UIAlertController(title: "Error", message: "Please enter data in all fields", preferredStyle: .alert)
+    func createAlert(errorName:String) {
+        let alert = UIAlertController(title: "Error", message: errorName, preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: " OK ", style: .cancel, handler: {
                                         action in print("tapped OK")}) )
@@ -102,4 +145,18 @@ class SignUpViewController: UIViewController {
         s1.modalPresentationStyle = .fullScreen
         self.present(s1, animated: true)
     }
+    
+    @IBAction func backToLogin(_ sender: Any) {
+        
+        print("Moving to Login Screen")
+        guard let s1 = storyboard?.instantiateViewController(identifier: "login") as? LoginViewController else {
+        print("Screen not found")
+        return
+        }
+        
+        s1.modalPresentationStyle = .fullScreen
+        self.present(s1, animated: true)
+        
+    }
+    
 }

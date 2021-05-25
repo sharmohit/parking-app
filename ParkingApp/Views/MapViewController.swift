@@ -21,12 +21,14 @@ import MapKit
 
 class MapViewController: UIViewController {
     
+    
     @IBOutlet weak var mapView: MKMapView!
     
     private var locationController = LocationController()
     private var userAnnotation = MKPointAnnotation()
     private var parkingCoordinate = CLLocationCoordinate2D(latitude: 18.5204, longitude: 73.8567)
     private var errorFlag = false
+    
     
     var parking:Parking?
     
