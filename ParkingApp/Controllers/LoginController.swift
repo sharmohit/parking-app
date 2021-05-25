@@ -32,7 +32,6 @@ class LoginController {
     }
     
     func initiateLogin() {
-        
         let email = defaults.string(forKey:"email") ?? ""
         let password = defaults.string(forKey:"pass") ?? ""
         if !email.isEmpty &&

@@ -24,18 +24,32 @@ class MapViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     
     private var locationController = LocationController()
+    private var userAnnotation = MKPointAnnotation()
+    private var parkingCoordinate = CLLocationCoordinate2D(latitude: 18.5204, longitude: 73.8567)
+    private var errorFlag = false
     
-    var parkingCoordinate = CLLocationCoordinate2D(latitude: 18.5204, longitude: 73.8567)
+    var parking:Parking?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        mapView.delegate = self
-        locationController.requestLocationAccess(delegate: self)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        self.mapView.removeAnnotations(mapView.annotations)
+        if let parking = parking {
+            self.parkingCoordinate.latitude = parking.locLat
+            self.parkingCoordinate.latitude = parking.locLong
+        }
+        
+        self.mapView.delegate = self
+        self.locationController.delegate = self
+        self.locationController.requestLocationAccess(requireContinuousUpdate: true)
+        
+        let parkingAnnotation = MKPointAnnotation()
+        parkingAnnotation.coordinate = parkingCoordinate
+        parkingAnnotation.title = "Parking is here"
+        
+        userAnnotation.title = "You are here"
+        
+        self.mapView.addAnnotation(userAnnotation)
+        self.mapView.addAnnotation(parkingAnnotation)
     }
     
     private func showAlert(title:String, message:String) {
@@ -55,51 +69,31 @@ extension MapViewController : CLLocationManagerDelegate, MKMapViewDelegate{
         return renderer
     }
     
-    func locationDidCalculateRoute(response: MKDirections.Response) {
-        
-        if let route = response.routes.first {
-            
-            self.mapView.addOverlay(route.polyline)
-            self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, edgePadding: UIEdgeInsets.init(top: 80.0, left: 20.0, bottom: 100.0, right: 20.0), animated: true)
-            
-            let srcAnnotation = MKPointAnnotation()
-            srcAnnotation.coordinate = response.source.placemark.coordinate
-            srcAnnotation.title = "You are here"
-            
-            let destAnnotation = MKPointAnnotation()
-            destAnnotation.coordinate = response.destination.placemark.coordinate
-            destAnnotation.title = "Parking is here"
-            
-            self.mapView.addAnnotation(srcAnnotation)
-            self.mapView.addAnnotation(destAnnotation)
-        }
-    }
-    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-        self.locationController.fetchRoute(pickupCoordinate: manager.location!.coordinate, destinationCoordinate: self.parkingCoordinate){
+        self.locationController.fetchRoute(sourceCoordinate: manager.location!.coordinate, destinationCoordinate: self.parkingCoordinate){
             (response) in
             
             if let response = response {
                 
                 if let route = response.routes.first {
                     
+                    self.errorFlag = false
                     self.mapView.addOverlay(route.polyline)
                     self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, edgePadding: UIEdgeInsets.init(top: 80.0, left: 20.0, bottom: 100.0, right: 20.0), animated: true)
                     
-                    let srcAnnotation = MKPointAnnotation()
-                    srcAnnotation.coordinate = response.source.placemark.coordinate
-                    srcAnnotation.title = "You are here"
-                    
-                    let destAnnotation = MKPointAnnotation()
-                    destAnnotation.coordinate = response.destination.placemark.coordinate
-                    destAnnotation.title = "Parking is here"
-                    
-                    self.mapView.addAnnotation(srcAnnotation)
-                    self.mapView.addAnnotation(destAnnotation)
+                    self.userAnnotation.coordinate = manager.location!.coordinate
                 }
             } else {
-                self.showAlert(title: "Error", message: "Unable to process route")
+                if !self.errorFlag {
+                    self.errorFlag = true
+                    self.showAlert(title: "Error", message: "Unable to process route")
+                }
+                
+                self.userAnnotation.coordinate = manager.location!.coordinate
+                let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
+                let region = MKCoordinateRegion(center: self.userAnnotation.coordinate, span: span)
+                self.mapView?.setRegion(region, animated: true)
             }
         }
     }

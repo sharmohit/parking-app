@@ -71,6 +71,7 @@ class LoginViewController: UIViewController, LoginDelegate {
         }
         
         parkingViewNVC.modalPresentationStyle = .fullScreen
+        parkingViewNVC.modalTransitionStyle = .crossDissolve
         self.present(parkingViewNVC, animated:true)
     }
     

@@ -19,42 +19,35 @@ class AddParkingViewController: UIViewController {
     private var locationController = LocationController()
     private var addParkingController = AddParkingController()
     
-    private var currentLocation:CLLocationCoordinate2D?
+    //private var currentLocation:CLLocationCoordinate2D?
     
     @IBOutlet weak var buildingCodeTextField: UITextField!
     @IBOutlet weak var hoursSegment: UISegmentedControl!
     @IBOutlet weak var plateNumberTextField: UITextField!
     @IBOutlet weak var suitNumberTextField: UITextField!
     @IBOutlet weak var locationTextField: UITextField!
+    @IBOutlet weak var locationActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var locateMeButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.locationController.requestLocationAccess(delegate: self)
-        self.plateNumberTextField.text = self.user.carPlateNumber
+        self.locationController.delegate = self
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        self.clearInputs()
+        self.locationActivityIndicator.isHidden = true
     }
     
     @IBAction func locateMeWasTapped(_ sender: UIButton) {
         
-        if let location = self.currentLocation {
-            locationController.fetchAddress(
-                location:CLLocation(latitude: location.latitude,
-                                    longitude: location.longitude)){
-                (errorMsg) in
-                if let error = errorMsg {
-                    self.showAlert(title: "Error", message: error)
-                }else {
-                    self.locationTextField.text = self.locationController.address.getCompleteAddress()
-                }
-            }
-        } else {
-            if CLLocationManager.locationServicesEnabled() {
-                showAlert(title: "Error", message: "Unable to get location")
-            } else {
-                locationController.requestLocationAccess(delegate: self)
-            }
-            
-        }
+        self.locationController.requestLocationAccess(requireContinuousUpdate: false)
+        self.locationActivityIndicator.isHidden = false
+        self.locateMeButton.isEnabled = false
+        self.locationTextField.isEnabled = false
+        self.locationActivityIndicator.startAnimating()
     }
     
     @IBAction func addParkingWasTapped(_ sender: UIButton) {
@@ -158,10 +151,51 @@ extension AddParkingViewController : CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-        self.currentLocation = manager.location?.coordinate
+        if let location = manager.location?.coordinate {
+            locationController.fetchAddress(
+                location:CLLocation(latitude: location.latitude,
+                                    longitude: location.longitude)){
+                (errorMsg) in
+                self.locationActivityIndicator.stopAnimating()
+                self.locationActivityIndicator.isHidden = true
+                self.locateMeButton.isEnabled = true
+                self.locationTextField.isEnabled = true
+                
+                if let error = errorMsg {
+                    self.showAlert(title: "Error", message: error)
+                }else {
+                    self.locationTextField.text = self.locationController.address.getCompleteAddress()
+                }
+            }
+        } else {
+            if manager.authorizationStatus == .authorizedWhenInUse ||
+                    manager.authorizationStatus == .authorizedAlways {
+                showAlert(title: "Error", message: "Unable to get location, Try again")
+            } else {
+                self.locationController.requestLocationAccess(requireContinuousUpdate: false)
+            }
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(#function, "Unable to get location \(error) Permission \(CLLocationManager.locationServicesEnabled())")
+        //print(#function, "Unable to get location \(error) Permission \(manager.authorizationStatus.rawValue)")
+        
+        if manager.authorizationStatus == .denied {
+            self.showLocationServicesAlert()
+        } else if manager.authorizationStatus == .authorizedWhenInUse ||
+                    manager.authorizationStatus == .authorizedAlways {
+            self.locationController.requestLocationAccess(requireContinuousUpdate: false)
+        }
+    }
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        
+        if manager.authorizationStatus == .denied {
+            self.showLocationServicesAlert()
+        }
+    }
+    
+    func showLocationServicesAlert() {
+        showAlert(title: "Attention", message: "Parking App need location access for locating your address. Please enable by visiting Settings > Privacy > Location Services > ParkingApp")
     }
 }
