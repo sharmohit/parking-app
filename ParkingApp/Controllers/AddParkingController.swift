@@ -21,7 +21,6 @@ class AddParkingController {
         self.parking = Parking()
     }
     
-    /// Return error string if add parking fail.
     func addParking(userID:String, buildingCode:String, parkingHours:Double, carPlateNumber:String, suitNumber:String, address:String, lat:Double, long:Double, completion:@escaping (String?) -> Void) {
         
         self.parking.buildingCode = buildingCode
