@@ -25,6 +25,10 @@ class ParkingTableViewController: UITableViewController {
         
         self.formatter.dateStyle = .medium
         self.formatter.timeStyle = .medium
+        
+        self.tableView.rowHeight = 100
+        //self.tableView.reloadData()
+        self.tableView.tableFooterView = UIView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -37,7 +41,6 @@ class ParkingTableViewController: UITableViewController {
                 print("Error View Parking: \(error!)")
             } else if parkingList != nil {
                 self.parkingList.append(contentsOf: parkingList!)
-                self.tableView.rowHeight = 100
                 self.tableView.reloadData()
             }
         }
