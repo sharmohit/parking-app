@@ -4,12 +4,6 @@
 //  Group Member: Javtesh Singh Bhullar
 //  Member ID: 101348129
 //
-//  LocationController.swift
-//  ParkingApp
-//
-//  Created by Mohit Sharma on 23/05/21.
-//
-//
 //  MapViewController.swift
 //  ParkingApp
 //
@@ -26,7 +20,7 @@ class MapViewController: UIViewController {
     
     private var locationController = LocationController()
     private var userAnnotation = MKPointAnnotation()
-    private var parkingCoordinate = CLLocationCoordinate2D(latitude: 18.5204, longitude: 73.8567)
+    private var parkingCoordinate = CLLocationCoordinate2D()
     private var errorFlag = false
     
     
