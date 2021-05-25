@@ -31,8 +31,6 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("Viewing SignUp Screen")
-       
     }
     
     @IBAction func signUp(_ sender: Any) {
@@ -46,25 +44,26 @@ class SignUpViewController: UIViewController {
         
         
         if (name!.isEmpty || email!.isEmpty || pass!.isEmpty || mobileNo!.isEmpty || carPlateNo!.isEmpty) {
-                    let errorEmpty = "You must enter all required fields. "
-                    createAlert(errorName: errorEmpty)
-                }
+            let errorEmpty = "You must enter all required fields. "
+            createAlert(errorName: errorEmpty)
+        }
         else if ((email?.isValidEmail) == false){
             let errorEmail = "Email ID is invalid"
             createAlert(errorName: errorEmail)
         }
         
-        else if carPlateNo?.count != 5 {
-            let errorCarPlate = "Please enter valid 5 digit Car Plate Number"
-            createAlert(errorName: errorCarPlate)
+        else if self.etCarPlateNumber.text!.count > 8 {
+            createAlert(errorName: "Maximum 8 alphanumeric characters allowed for Car Plate Number")
+        } else if self.etCarPlateNumber.text!.count < 2 {
+            createAlert(errorName: "Minimum 2 alphanumeric characters required for Car Plate Number")
+        } else if !self.etCarPlateNumber.text!.isAlphanumeric {
+            createAlert(errorName: "Car Plate Number must be an alphanumeric character")
         }
         
         else {
             
             
             theEmail = email!
-            
-            print("Setting all values in User file")
             
             User.getInstance().name = name!
             User.getInstance().email = email!
@@ -78,11 +77,9 @@ class SignUpViewController: UIViewController {
                 "password" : pass,
                 "phone" : mobileNo,
                 "car_plate_number" : carPlateNo
-                    ]
+            ]
             
             db.collection("users").addDocument(data: userInfo){ (error ) in
-                
-                print("Uploading user info to the firestore ... ")
                 
                 if let err = error{
                     print("error when saving documnet")
@@ -103,30 +100,29 @@ class SignUpViewController: UIViewController {
     func getId(){
         db.collection("users").whereField("email", isEqualTo: theEmail)
             .getDocuments { queryResults, error in
-            
-            if let err = error {
-                print("Error getting documents from student collection")
-                print(err)
-                return
                 
-            }
-            
-            else {
-                // we were successful in getting the docs.
-                if (queryResults!.count == 0){
-                    print("No results found")
+                if let err = error {
+                    print("Error getting documents from student collection")
+                    print(err)
+                    return
+                    
                 }
+                
                 else {
-                    // we found some results
-                    for result in queryResults!.documents {
-                        print("We got id of document as : \(result.documentID)")
-                        User.getInstance().id = result.documentID
-    }
-}
+                    // we were successful in getting the docs.
+                    if (queryResults!.count == 0){
+                        print("No results found")
+                    }
+                    else {
+                        // we found some results
+                        for result in queryResults!.documents {
+                            User.getInstance().id = result.documentID
+                        }
+                    }
+                }
             }
-            }
     }
-        
+    
     func createAlert(errorName:String) {
         let alert = UIAlertController(title: "Error", message: errorName, preferredStyle: .alert)
         
@@ -136,10 +132,8 @@ class SignUpViewController: UIViewController {
     }
     
     func movingToHomeScreen () {
-        print("Moving to HomeScreen")
         guard let s1 = storyboard?.instantiateViewController(identifier: "Home") as? HomeViewController else {
-        print("Screen not found")
-        return
+            return
         }
         
         s1.modalPresentationStyle = .fullScreen
@@ -148,10 +142,8 @@ class SignUpViewController: UIViewController {
     
     @IBAction func backToLogin(_ sender: Any) {
         
-        print("Moving to Login Screen")
         guard let s1 = storyboard?.instantiateViewController(identifier: "login") as? LoginViewController else {
-        print("Screen not found")
-        return
+            return
         }
         
         s1.modalPresentationStyle = .fullScreen
