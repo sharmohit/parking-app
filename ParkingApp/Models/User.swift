@@ -74,7 +74,7 @@ class User : Codable {
     
     func fetchUser(id:String, completion: @escaping (String?) -> Void) {
         
-        db.collection("users").whereField("email", isEqualTo: id).getDocuments{ (queryResults, error) in
+        self.db.collection("users").whereField("email", isEqualTo: id).getDocuments{ (queryResults, error) in
             
             if error != nil {
                 completion("An internal error occured")
