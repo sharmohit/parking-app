@@ -28,7 +28,7 @@ class AddParkingController {
         self.parking.parkingHours = parkingHours
         self.parking.carPlateNumber = carPlateNumber
         self.parking.suitNumber = suitNumber
-        self.parking.address = address
+        self.parking.streetAddress = address
         self.parking.coordinate.latitude = lat
         self.parking.coordinate.longitude = long
         self.parking.addParking(userID: User.getInstance().id!, parking: self.parking){
