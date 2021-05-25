@@ -30,70 +30,45 @@ class DetailScreenViewController: UIViewController {
     
     @IBOutlet weak var lblDateAndTime: UILabel!
     
+    @IBOutlet weak var coordinateLabel: UILabel!
+    
     var parking:Parking?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("Parking Detail Screeen Loaded.")
-        
         formatter.dateStyle = .medium
         formatter.timeStyle = .medium
-
+        
         let datetime = formatter.string(from: parking!.dateTime.dateValue())
         print(datetime)
-        
-        
-//        var newLoc:LocationController
-//        newLoc.lat = parking!.locLat
-//        newLoc.long = parking!.locLong
         
         lblBulidingCode.text = parking?.buildingCode
         lblNumberOfHours.text = parking?.parkingHours.description
         lblSuitNumber.text = parking?.suitNumber.description
         lblDateAndTime.text = formatter.string(from: parking!.dateTime.dateValue())
-        
-        print("Location of user is : ")
-        
-        var lat = parking!.locLat
-        var long = parking!.locLong
-      
         lblLocationOfCar.text = parking?.streetAddress.description
-        
-        print("\tLatitiude is \(lat)")
-        print("\tLongitude is \(long)")
-
+        coordinateLabel.text = "\(parking?.coordinate.latitude ?? 0.0) ° N,\(parking?.coordinate.longitude ?? 0.0)° E"
     }
     
     @IBAction func getDirection(_ sender: Any) {
-        
-        print(#function,"getDirection pressed")
-        
-        guard let s2 = storyboard?.instantiateViewController(identifier: "mapView") as? MapViewController
-                else {
-                    print("cannot find secon screen")
-                    return
-                }
-                
-//        s2.latitudeSent = parking!.locLat
-//        s2.longitudeSent = parking!.locLong
-        
+        guard let s2 = storyboard?.instantiateViewController(identifier: "ParkingMap") as? MapViewController
+        else {
+            return
+        }
+        s2.parking = self.parking
         show(s2, sender: self)
         
     }
     
     @IBAction func backButton(_ sender: Any) {
         
-        print("Moving to View ParkingScreen")
         guard let s1 = storyboard?.instantiateViewController(identifier: "Home") as? HomeViewController else {
-        print("Screen not found")
-        return
+            return
         }
         
         s1.modalPresentationStyle = .fullScreen
         self.present(s1, animated: true)
         
     }
-    
-    
 }

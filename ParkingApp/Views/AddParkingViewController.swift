@@ -42,10 +42,7 @@ class AddParkingViewController: UIViewController {
     @IBAction func locateMeWasTapped(_ sender: UIButton) {
         
         self.locationController.requestLocationAccess(requireContinuousUpdate: false)
-        self.locationActivityIndicator.isHidden = false
-        self.locateMeButton.isEnabled = false
-        self.locationTextField.isEnabled = false
-        self.locationActivityIndicator.startAnimating()
+        self.setLocateMeActive(isActive: true)
     }
     
     @IBAction func addParkingWasTapped(_ sender: UIButton) {
@@ -144,6 +141,16 @@ class AddParkingViewController: UIViewController {
         alertController.addAction(UIAlertAction(title: "Dismiss", style: .default))
         self.present(alertController, animated: true, completion: nil)
     }
+    
+    private func setLocateMeActive(isActive:Bool) {
+        
+        isActive ? self.locationActivityIndicator.startAnimating() :
+            self.locationActivityIndicator.stopAnimating()
+            
+        self.locationActivityIndicator.isHidden = !isActive
+        self.locateMeButton.isEnabled = !isActive
+        self.locationTextField.isEnabled = !isActive
+    }
 }
 
 extension AddParkingViewController : CLLocationManagerDelegate {
@@ -155,10 +162,7 @@ extension AddParkingViewController : CLLocationManagerDelegate {
                 location:CLLocation(latitude: location.latitude,
                                     longitude: location.longitude)){
                 (errorMsg) in
-                self.locationActivityIndicator.stopAnimating()
-                self.locationActivityIndicator.isHidden = true
-                self.locateMeButton.isEnabled = true
-                self.locationTextField.isEnabled = true
+                self.setLocateMeActive(isActive: false)
                 
                 if let error = errorMsg {
                     self.showAlert(title: "Error", message: error)
@@ -192,7 +196,9 @@ extension AddParkingViewController : CLLocationManagerDelegate {
         }
     }
     
-    func showLocationServicesAlert() {
+    private func showLocationServicesAlert() {
+        
         showAlert(title: "Attention", message: "Parking App needs location access for locating your address. Please enable by visiting Settings > Privacy > Location Services > ParkingApp")
+        self.setLocateMeActive(isActive: false)
     }
 }
