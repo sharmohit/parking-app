@@ -79,9 +79,12 @@ class UpdateViewController: UIViewController {
             createAlert(errorName: errorEmail)
         }
         
-        else if userCarPlateNumber.count != 5 {
-            let errorCarPlate = "Please enter valid 5 digit Car Plate Number"
-            createAlert(errorName: errorCarPlate)
+        else if self.userCarPlateNumber.count > 8 {
+            createAlert(errorName: "Maximum 8 alphanumeric characters allowed for Car Plate Number")
+        } else if self.userCarPlateNumber.count < 2 {
+            createAlert(errorName: "Minimum 2 alphanumeric characters required for Car Plate Number")
+        } else if !self.utCarPlateNumber.text!.isAlphanumeric {
+            createAlert(errorName: "Car Plate Number must be an alphanumeric character")
         }
         
         else {

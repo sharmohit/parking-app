@@ -44,10 +44,11 @@ class DetailScreenViewController: UIViewController {
         print(datetime)
         
         lblBulidingCode.text = parking?.buildingCode
-        lblNumberOfHours.text = parking?.parkingHours.description
+        lblNumberOfHours.text = self.getParkingHour(hour: Int(parking!.parkingHours))
         lblSuitNumber.text = parking?.suitNumber.description
         lblDateAndTime.text = formatter.string(from: parking!.dateTime.dateValue())
-        lblLocationOfCar.text = parking?.streetAddress.description
+        lblLocationOfCar.text = (parking?.streetAddress.description.isEmpty)! ? "Unavailable" : parking?.streetAddress.description
+            
         coordinateLabel.text = "\(parking?.coordinate.latitude ?? 0.0) ° N,\(parking?.coordinate.longitude ?? 0.0)° E"
     }
     
@@ -59,6 +60,15 @@ class DetailScreenViewController: UIViewController {
         s2.parking = self.parking
         show(s2, sender: self)
         
+    }
+    
+    func getParkingHour(hour:Int) -> String {
+        
+        if hour > 1 {
+            return "\(hour) hrs"
+        } else {
+           return "\(hour) hr"
+        }
     }
     
     @IBAction func backButton(_ sender: Any) {

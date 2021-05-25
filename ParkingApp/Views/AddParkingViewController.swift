@@ -70,6 +70,8 @@ class AddParkingViewController: UIViewController {
             return "Building code is empty"
         } else if self.buildingCodeTextField.text!.count != 5 {
             return "Building Code must have 5 alphanumeric characters"
+        } else if !self.buildingCodeTextField.text!.isAlphanumeric {
+            return "Building must be an alphanumeric character"
         } else if hoursSegment.selectedSegmentIndex < 0 {
             return "Please select parking hours"
         } else if self.plateNumberTextField.text!.isEmpty {
@@ -78,12 +80,16 @@ class AddParkingViewController: UIViewController {
             return "Maximum 8 alphanumeric characters allowed for Car Plate Number"
         } else if self.plateNumberTextField.text!.count < 2 {
             return "Minimum 2 alphanumeric characters required for Car Plate Number"
+        } else if !self.plateNumberTextField.text!.isAlphanumeric {
+            return "Car Plate Number must be an alphanumeric character"
         } else if self.suitNumberTextField.text!.isEmpty {
             return "Suit number is empty"
         } else if self.suitNumberTextField.text!.count > 5 {
-            return "Maximum 8 alphanumeric characters allowed for Suit Number"
+            return "Maximum 5 alphanumeric characters allowed for Suit Number"
         } else if self.suitNumberTextField.text!.count < 2 {
             return "Minimum 2 alphanumeric characters required for Suit Number"
+        } else if !self.suitNumberTextField.text!.isAlphanumeric {
+            return "Suit Number must be an alphanumeric character"
         } else if self.locationTextField.text!.isEmpty {
             return "Please provide parking location"
         } else {
@@ -98,7 +104,7 @@ class AddParkingViewController: UIViewController {
             buildingCode: self.buildingCodeTextField.text!,
             parkingHours: self.getHourFromSegmentIndex(segmentIndex: self.hoursSegment.selectedSegmentIndex),
             carPlateNumber: self.plateNumberTextField.text!,
-            suitNumber: Int(self.suitNumberTextField.text!) ?? 0,
+            suitNumber: self.suitNumberTextField.text!,
             address: self.locationController.address.street,
             lat: lat, long: long){
             (error) in

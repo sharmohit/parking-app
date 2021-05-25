@@ -23,7 +23,7 @@ struct Parking : Codable {
     var buildingCode:String
     var parkingHours:Double
     var carPlateNumber:String
-    var suitNumber:Int
+    var suitNumber:String
     var streetAddress:String
     var coordinate:CLLocationCoordinate2D
     var dateTime:Timestamp
@@ -32,7 +32,7 @@ struct Parking : Codable {
         self.buildingCode = ""
         self.parkingHours = 0.0
         self.carPlateNumber = ""
-        self.suitNumber = 0
+        self.suitNumber = ""
         self.streetAddress = ""
         self.coordinate = CLLocationCoordinate2D()
         self.dateTime = Timestamp()
@@ -66,7 +66,7 @@ struct Parking : Codable {
         self.buildingCode = try values.decode(String.self, forKey: .buildingCode)
         self.parkingHours = try values.decode(Double.self, forKey: .parkingHours)
         self.carPlateNumber = try values.decode(String.self, forKey: .carPlateNumber)
-        self.suitNumber = try values.decode(Int.self, forKey: .suitNumber)
+        self.suitNumber = try values.decode(String.self, forKey: .suitNumber)
         self.streetAddress = try values.decode(String.self, forKey: .streetAddress)
         let geoPoint = try values.decode(GeoPoint.self, forKey: .coordinate)
         self.coordinate = CLLocationCoordinate2D(latitude: geoPoint.latitude, longitude: geoPoint.longitude)
