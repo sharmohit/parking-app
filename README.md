@@ -102,7 +102,7 @@ location on map and display the route to the parking location from the current l
   - [x] Delete user profile
   - [x] Logout user profile
   
-- [x] 5. Configure Firestore Console and Firebase in Project @Mohit Sharma(101342267)
+- [x] 5. Configure Firestore Console and Firebase in Project @MohitSharma(101342267)
   - [x] Create firebase app and configure firestore
   - [x] Add GoogleService-Info.plist in Xcode project
   - [x] Configure firebase and install pods in Xcode project 
@@ -113,7 +113,7 @@ location on map and display the route to the parking location from the current l
   - [x] Fetch parking detail from firestore
   - [x] Display parking detail
 
-- [x] 7. Create Home and Parking View Screen UI @Mohit Sharma(101342267)
+- [x] 7. Create Home and Parking View Screen UI @MohitSharma(101342267)
   - [x] Design home and parking view screen
   - [x] Create tabbed home screen
   - [x] Link navigation controller with view/add parking and profile screen, 
@@ -129,7 +129,7 @@ location on map and display the route to the parking location from the current l
   - [x] Add Parking
   - [x] parking detail
   
-- [x] 9. Add location service @Mohit Sharma(101342267)
+- [x] 9. Add location service @MohitSharma(101342267)
   - [x] Create MapView Screen 
   - [x] Implement location controller
   - [x] Implement reverse geocoding
