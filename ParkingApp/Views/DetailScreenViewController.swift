@@ -16,6 +16,11 @@ import UIKit
 
 class DetailScreenViewController: UIViewController {
     
+    private let formatter = DateFormatter()
+    
+    
+
+    
     @IBOutlet weak var lblBulidingCode: UILabel!
     
     
@@ -32,15 +37,33 @@ class DetailScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(#function,"getDirection pressed")
+        print("Parking Detail Screeen Loaded.")
         
-        print("Parking info is : \(parking?.suitNumber), \(parking?.buildingCode), \(parking?.carPlateNumber)")
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .medium
+
+        let datetime = formatter.string(from: parking!.dateTime.dateValue())
+        print(datetime)
+        
+        
+//        var newLoc:LocationController
+//        newLoc.lat = parking!.locLat
+//        newLoc.long = parking!.locLong
         
         lblBulidingCode.text = parking?.buildingCode
-        lblNumberOfHours.text = parking?.dateTime.description
+        lblNumberOfHours.text = parking?.parkingHours.description
         lblSuitNumber.text = parking?.suitNumber.description
-        lblLocationOfCar.text = parking?.locLat.description
-        lblDateAndTime.text = parking?.dateTime.description
+        //lblLocationOfCar.text =
+        lblDateAndTime.text = formatter.string(from: parking!.dateTime.dateValue())
+        
+        print("Location of user is : ")
+        
+        var lat = parking!.locLat
+        var long = parking!.locLong
+        
+        print("\tLatitiude is \(lat)")
+        print("\tLongitude is \(long)")
+        
         
 
         // Do any additional setup after loading the view.
@@ -48,7 +71,7 @@ class DetailScreenViewController: UIViewController {
     
     @IBAction func getDirection(_ sender: Any) {
         
-        
+        print(#function,"getDirection pressed")
         
     }
     
