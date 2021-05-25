@@ -51,13 +51,14 @@ class DetailScreenViewController: UIViewController {
         lblBulidingCode.text = parking?.buildingCode
         lblNumberOfHours.text = parking?.parkingHours.description
         lblSuitNumber.text = parking?.suitNumber.description
-        //lblLocationOfCar.text =
         lblDateAndTime.text = formatter.string(from: parking!.dateTime.dateValue())
         
         print("Location of user is : ")
         
         var lat = parking!.locLat
         var long = parking!.locLong
+      
+        lblLocationOfCar.text = parking?.streetAddress.description
         
         print("\tLatitiude is \(lat)")
         print("\tLongitude is \(long)")

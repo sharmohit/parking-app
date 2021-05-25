@@ -11,6 +11,7 @@
 //
 
 import Foundation
+import MapKit
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
@@ -23,8 +24,8 @@ struct Parking : Codable {
     var parkingHours:Double
     var carPlateNumber:String
     var suitNumber:Int
-    var locLat:Double
-    var locLong:Double
+    var streetAddress:String
+    var coordinate:CLLocationCoordinate2D
     var dateTime:Timestamp
     
     init() {
@@ -32,8 +33,8 @@ struct Parking : Codable {
         self.parkingHours = 0.0
         self.carPlateNumber = ""
         self.suitNumber = 0
-        self.locLat = 0.0
-        self.locLong = 0.0
+        self.streetAddress = ""
+        self.coordinate = CLLocationCoordinate2D()
         self.dateTime = Timestamp()
     }
     
@@ -43,8 +44,8 @@ struct Parking : Codable {
         case parkingHours = "parking_hours"
         case carPlateNumber = "car_plate_number"
         case suitNumber = "suit_number"
-        case locLat = "loc_lat"
-        case locLong = "loc_long"
+        case streetAddress = "street_address"
+        case coordinate = "coordinate"
         case dateTime = "date_time"
     }
     
@@ -54,8 +55,8 @@ struct Parking : Codable {
         try container.encode(self.parkingHours, forKey: .parkingHours)
         try container.encode(self.carPlateNumber, forKey: .carPlateNumber)
         try container.encode(self.suitNumber, forKey: .suitNumber)
-        try container.encode(self.locLat, forKey: .locLat)
-        try container.encode(self.locLong, forKey: .locLong)
+        try container.encode(self.streetAddress, forKey: .streetAddress)
+        try container.encode(GeoPoint.init(latitude: self.coordinate.latitude, longitude: self.coordinate.longitude), forKey: .coordinate)
         try container.encode(self.dateTime, forKey: .dateTime)
     }
     
@@ -66,8 +67,9 @@ struct Parking : Codable {
         self.parkingHours = try values.decode(Double.self, forKey: .parkingHours)
         self.carPlateNumber = try values.decode(String.self, forKey: .carPlateNumber)
         self.suitNumber = try values.decode(Int.self, forKey: .suitNumber)
-        self.locLat = try values.decode(Double.self, forKey: .locLat)
-        self.locLong = try values.decode(Double.self, forKey: .locLong)
+        self.streetAddress = try values.decode(String.self, forKey: .streetAddress)
+        let geoPoint = try values.decode(GeoPoint.self, forKey: .coordinate)
+        self.coordinate = CLLocationCoordinate2D(latitude: geoPoint.latitude, longitude: geoPoint.longitude)
         self.dateTime = try values.decode(Timestamp.self, forKey: .dateTime)
     }
     
@@ -76,7 +78,7 @@ struct Parking : Codable {
             try db.collection("users/\(userID)/parkings").addDocument(from : parking){
                 (error) in
                 if let error = error {
-                    completion("Unable to add parking. Please Try again")
+                    completion("Unable to add parking. Please Try again. Error: \(error)")
                 } else {
                     completion(nil)
                 }

@@ -19,8 +19,6 @@ class AddParkingViewController: UIViewController {
     private var locationController = LocationController()
     private var addParkingController = AddParkingController()
     
-    //private var currentLocation:CLLocationCoordinate2D?
-    
     @IBOutlet weak var buildingCodeTextField: UITextField!
     @IBOutlet weak var hoursSegment: UISegmentedControl!
     @IBOutlet weak var plateNumberTextField: UITextField!
@@ -104,6 +102,7 @@ class AddParkingViewController: UIViewController {
             parkingHours: self.getHourFromSegmentIndex(segmentIndex: self.hoursSegment.selectedSegmentIndex),
             carPlateNumber: self.plateNumberTextField.text!,
             suitNumber: Int(self.suitNumberTextField.text!) ?? 0,
+            address: self.locationController.address.street,
             lat: lat, long: long){
             (error) in
             
@@ -178,8 +177,6 @@ extension AddParkingViewController : CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        //print(#function, "Unable to get location \(error) Permission \(manager.authorizationStatus.rawValue)")
-        
         if manager.authorizationStatus == .denied {
             self.showLocationServicesAlert()
         } else if manager.authorizationStatus == .authorizedWhenInUse ||
@@ -196,6 +193,6 @@ extension AddParkingViewController : CLLocationManagerDelegate {
     }
     
     func showLocationServicesAlert() {
-        showAlert(title: "Attention", message: "Parking App need location access for locating your address. Please enable by visiting Settings > Privacy > Location Services > ParkingApp")
+        showAlert(title: "Attention", message: "Parking App needs location access for locating your address. Please enable by visiting Settings > Privacy > Location Services > ParkingApp")
     }
 }
