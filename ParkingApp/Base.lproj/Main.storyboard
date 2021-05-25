@@ -548,6 +548,16 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                      
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="calendar.badge.clock" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="3HF-th-oc9" userLabel="DateTimeImage">
+                                            <rect key="frame" x="17" y="59.66666666666697" width="18" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="location" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="MaZ-XA-mAj" userLabel="ParkedLocationImage">
+                                            <rect key="frame" x="356" y="20.333333333333332" width="11" height="10"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                      
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MMMMMMMM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rYM-BF-pTD" userLabel="CarPlateLabel">
                                             <rect key="frame" x="93" y="29" width="125" height="28"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -555,17 +565,28 @@
                                             <color key="textColor" red="0.8392156959" green="0.61568629740000003" blue="0.078431375319999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                      
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="clock" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="POI-Xz-TMa" userLabel="ParkedHourImage">
                                             <rect key="frame" x="353" y="15.999999999999091" width="15" height="15"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="tintColor" red="0.8392156959" green="0.61568629740000003" blue="0.078431375319999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </imageView>
+                                  
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="19 Road, Mumbai, india" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wcN-6P-7Qo" userLabel="AddressLabel">
+                                            <rect key="frame" x="212" y="18" width="140" height="15"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="9"/>
+                                            <color key="textColor" systemColor="systemBlueColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                  
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" systemColor="labelColor"/>
                                 <color key="tintColor" red="0.8392156959" green="0.61568629740000003" blue="0.078431375319999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <connections>
+                                    <outlet property="addressLabel" destination="wcN-6P-7Qo" id="e81-DY-7Ea"/>
                                     <outlet property="carPlateLabel" destination="rYM-BF-pTD" id="Ie3-9k-amA"/>
                                     <outlet property="dateLabel" destination="Iva-oI-tu6" id="8qu-94-oW1"/>
                                     <outlet property="hoursLabel" destination="7eq-kr-ZI5" id="Ee2-IW-api"/>
@@ -780,6 +801,7 @@
         <image name="car" catalog="system" width="128" height="93"/>
         <image name="clock" catalog="system" width="128" height="121"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
+        <image name="location" catalog="system" width="128" height="121"/>
         <image name="location.viewfinder" catalog="system" width="128" height="115"/>
         <image name="login Pic" width="867" height="1829"/>
         <image name="parkingDetail Pic" width="867" height="1829"/>

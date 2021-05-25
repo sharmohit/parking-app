@@ -36,8 +36,7 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         
         if let parking = parking {
-            self.parkingCoordinate.latitude = parking.locLat
-            self.parkingCoordinate.latitude = parking.locLong
+            self.parkingCoordinate = parking.coordinate
         }
         
         self.mapView.delegate = self
@@ -62,7 +61,7 @@ class MapViewController: UIViewController {
     }
 }
 
-extension MapViewController : CLLocationManagerDelegate, MKMapViewDelegate{
+extension MapViewController : CLLocationManagerDelegate, MKMapViewDelegate {
         
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(overlay: overlay)
@@ -82,7 +81,7 @@ extension MapViewController : CLLocationManagerDelegate, MKMapViewDelegate{
                     
                     self.errorFlag = false
                     self.mapView.addOverlay(route.polyline)
-                    self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, edgePadding: UIEdgeInsets.init(top: 80.0, left: 20.0, bottom: 100.0, right: 20.0), animated: true)
+                    self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, edgePadding: UIEdgeInsets.init(top: 80.0, left: 45.0, bottom: 100.0, right: 45.0), animated: true)
                     
                     self.userAnnotation.coordinate = manager.location!.coordinate
                 }
@@ -98,5 +97,25 @@ extension MapViewController : CLLocationManagerDelegate, MKMapViewDelegate{
                 self.mapView?.setRegion(region, animated: true)
             }
         }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        if manager.authorizationStatus == .denied {
+            self.showLocationServicesAlert()
+        } else if manager.authorizationStatus == .authorizedWhenInUse ||
+                    manager.authorizationStatus == .authorizedAlways {
+            self.locationController.requestLocationAccess(requireContinuousUpdate: true)
+        }
+    }
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        
+        if manager.authorizationStatus == .denied {
+            self.showLocationServicesAlert()
+        }
+    }
+    
+    func showLocationServicesAlert() {
+        showAlert(title: "Attention", message: "Parking App needs location access for locating your address. Please enable by visiting Settings > Privacy > Location Services > ParkingApp")
     }
 }

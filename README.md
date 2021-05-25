@@ -37,8 +37,8 @@ location on map and display the route to the parking location from the current l
 ##
 &nbsp;
 ## Screenshots
-<img src = "https://github.com/sharmohit/parking-app/blob/master/Images/ParkingApp_ERD.png" alt="ParkingApp ERD" width="695" height="387"/>
-<img src = "https://github.com/sharmohit/parking-app/blob/master/Images/ParkingApp_FireBase.png" alt="ParkingApp Firebase Console" width="695" height="340"/>
+<img src = "https://github.com/sharmohit/parking-app/blob/master/Images/ParkingApp_ERD.png" alt="ParkingApp ERD" width="695" height="440"/>
+<img src = "https://github.com/sharmohit/parking-app/blob/master/Images/ParkingApp_Firebase_Console.png" alt="ParkingApp Firebase Console" width="695" height="340"/>
 <img src = "https://github.com/sharmohit/parking-app/blob/master/Images/ParkingApp_Xcode.png" alt="ParkingApp Xcode Project" width="695" height="320"/>
 <table style="width:100%">
   <tr>
@@ -64,48 +64,56 @@ location on map and display the route to the parking location from the current l
     <td><img src = "https://github.com/sharmohit/parking-app/blob/master/Images/06_ParkingApp_ParkingDetailUI.png" alt="Parking Detail UI" width="205" height="443"/></td>
   </tr>
 </table>
+<table style="width:100%">
+  <tr>
+    <th>Parking Map UI</th>
+  </tr>
+  <tr>
+    <td><img src = "https://github.com/sharmohit/parking-app/blob/master/Images/07_ParkingApp_ParkingMapUI.png" alt="Parking Map UI" width="205" height="443"/</td>
+  </tr>
+</table>
 
 ##
 &nbsp;
 ## Task Lists
-- [x] 1. Create Sign-In Screen @sharmohit
+- [x] 1. Create Sign-In Screen @MohitSharma(101342267)
   - [x] Design sign-in screen
   - [x] Login and validate user with firestore
   - [x] Implement remember me
   - [x] Link sign-up and home screens
 
-- [x] 2. Create Sign-Up Screen UI @JavteshGBC
+- [x] 2. Create Sign-Up Screen UI @JavteshSinghBhullar(101348129)
   - [x] Design sign-up screen
   - [x] Validate user input
   - [x] Create user account with firestore
   - [x] Link sign-in and home screens
 
-- [x] 3. Create Add Parking Screen UI @sharmohit
+- [x] 3. Create Add Parking Screen UI @MohitSharma(101342267)
   - [x] Design add parking screen
   - [x] Fetch and convert user location
   - [x] Validate user input
   - [x] Add parking with firestore
 
-- [ ] 4. Create Update Profile Screen UI @JavteshGBC
+- [x] 4. Create Update Profile Screen UI @JavteshSinghBhullar(101348129)
   - [x] Design update profile screen
   - [x] Fetch user input
   - [x] Validate user input
   - [x] update user profile with firestore
   - [x] Delete user profile
-  - [x] Logout user progile
+  - [x] Logout user profile
   
-- [x] 5. Configure Firestore Console and Firebase in Project @sharmohit
+- [x] 5. Configure Firestore Console and Firebase in Project @Mohit Sharma(101342267)
   - [x] Create firebase app and configure firestore
   - [x] Add GoogleService-Info.plist in Xcode project
   - [x] Configure firebase and install pods in Xcode project 
   - [x] Test firestore with test data
 
-- [ ] 6. Create Parking Detail View Screen UI @JavteshGBC
+- [x] 6. Create Parking Detail View Screen UI @JavteshSinghBhullar(101348129)
   - [x] Design parking detail view screen
-  - [ ] Fetch parking detail from firestore
-  - [ ] Display parking detail
+  - [x] Fetch parking detail from firestore
+  - [x] Display parking detail
 
-- [x] 7. Create Home and Parking View Screen UI @sharmohit
+- [x] 7. Create Home and Parking View Screen UI @Mohit Sharma(101342267)
   - [x] Design home and parking view screen
   - [x] Create tabbed home screen
   - [x] Link navigation controller with view/add parking and profile screen, 
@@ -113,15 +121,15 @@ location on map and display the route to the parking location from the current l
   - [x] fetch user parking from firestore
   - [x] Link home and parking detail view screens
 
-- [ ] 8. Design Final UI with illustrations for all UI Screens @JavteshGBC
+- [x] 8. Design Final UI with illustrations for all UI Screens @JavteshSinghBhullar(101348129)
   - [x] SignUp Screen
   - [x] Update Screen
-  - [ ] Login Screen
-  - [ ] Home Screen
-  - [ ] Add Parking
-  - [ ] parking detail
+  - [x] Login Screen
+  - [x] Home Screen
+  - [x] Add Parking
+  - [x] parking detail
   
-- [x] 9. Add location service @sharmohit
+- [x] 9. Add location service @Mohit Sharma(101342267)
   - [x] Create MapView Screen 
   - [x] Implement location controller
   - [x] Implement reverse geocoding
