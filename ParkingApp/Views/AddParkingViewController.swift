@@ -198,7 +198,7 @@ extension AddParkingViewController : CLLocationManagerDelegate {
     
     private func showLocationServicesAlert() {
         
-        showAlert(title: "Attention", message: "Parking App needs location access for locating your address. Please enable by visiting Settings > Privacy > Location Services > ParkingApp")
+        showAlert(title: "Attention", message: "Parking App needs location access for locating your address.\n\nPlease enable by visiting Settings > Privacy > Location Services > ParkingApp")
         self.setLocateMeActive(isActive: false)
     }
 }

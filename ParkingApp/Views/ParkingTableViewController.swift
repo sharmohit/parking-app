@@ -14,7 +14,7 @@ import UIKit
 import MapKit
 
 class ParkingTableViewController: UITableViewController {
-
+    
     private let formatter = DateFormatter()
     
     private var viewParkingController = ViewParkingController()
@@ -27,7 +27,6 @@ class ParkingTableViewController: UITableViewController {
         self.formatter.timeStyle = .medium
         
         self.tableView.rowHeight = 100
-        //self.tableView.reloadData()
         self.tableView.tableFooterView = UIView()
     }
     
@@ -38,26 +37,29 @@ class ParkingTableViewController: UITableViewController {
         self.viewParkingController.fetchUserParkings(userID: User.getInstance().id!){
             (parkingList, error) in
             if error != nil {
-                print("Error View Parking: \(error!)")
+                let alertController = UIAlertController(title: "No Parking!", message:
+                                                            "Add Parking", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "Dismiss", style: .default))
+                self.present(alertController, animated: true, completion: nil)
             } else if parkingList != nil {
                 self.parkingList.append(contentsOf: parkingList!)
                 self.tableView.reloadData()
             }
         }
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return self.parkingList.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ParkingCell", for: indexPath) as! ParkingTableViewCell
         
@@ -77,7 +79,6 @@ class ParkingTableViewController: UITableViewController {
         
         let parkingDetailVC = parkingDetailNVC.viewControllers[0] as! DetailScreenViewController
         parkingDetailVC.parking = self.parkingList[indexPath.row]
-        //parkingDetailNVC.modalPresentationStyle = .fullScreen
         show(parkingDetailNVC, sender: self)
     }
 }
