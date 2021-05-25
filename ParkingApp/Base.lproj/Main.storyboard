@@ -491,6 +491,10 @@
                                             <rect key="frame" x="354" y="3.9999999999990905" width="15" height="15"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="location" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="MaZ-XA-mAj" userLabel="ParkedLocationImage">
+                                            <rect key="frame" x="356" y="20.333333333333332" width="11" height="10"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MMMMMMMM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rYM-BF-pTD" userLabel="CarPlateLabel">
                                             <rect key="frame" x="73" y="18" width="125" height="28"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -498,10 +502,18 @@
                                             <color key="textColor" systemColor="systemBlueColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="19 Road, Mumbai, india" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wcN-6P-7Qo" userLabel="AddressLabel">
+                                            <rect key="frame" x="212" y="18" width="140" height="15"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="9"/>
+                                            <color key="textColor" systemColor="systemBlueColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <connections>
+                                    <outlet property="addressLabel" destination="wcN-6P-7Qo" id="e81-DY-7Ea"/>
                                     <outlet property="carPlateLabel" destination="rYM-BF-pTD" id="Ie3-9k-amA"/>
                                     <outlet property="dateLabel" destination="Iva-oI-tu6" id="8qu-94-oW1"/>
                                     <outlet property="hoursLabel" destination="7eq-kr-ZI5" id="Ee2-IW-api"/>
@@ -701,6 +713,7 @@
         <image name="car.2" catalog="system" width="128" height="72"/>
         <image name="clock" catalog="system" width="128" height="121"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
+        <image name="location" catalog="system" width="128" height="121"/>
         <image name="location.viewfinder" catalog="system" width="128" height="115"/>
         <image name="person.crop.circle" catalog="system" width="128" height="121"/>
         <image name="plus" catalog="system" width="128" height="113"/>

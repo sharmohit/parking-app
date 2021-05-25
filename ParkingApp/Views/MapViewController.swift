@@ -34,8 +34,7 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         
         if let parking = parking {
-            self.parkingCoordinate.latitude = parking.locLat
-            self.parkingCoordinate.latitude = parking.locLong
+            self.parkingCoordinate = parking.coordinate
         }
         
         self.mapView.delegate = self

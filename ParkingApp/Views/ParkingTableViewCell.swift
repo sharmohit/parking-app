@@ -17,6 +17,7 @@ class ParkingTableViewCell: UITableViewCell {
     @IBOutlet weak var carPlateLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var hoursLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -22,14 +22,15 @@ class AddParkingController {
     }
     
     /// Return error string if add parking fail.
-    func addParking(userID:String, buildingCode:String, parkingHours:Double, carPlateNumber:String, suitNumber:Int, lat:Double, long:Double, completion:@escaping (String?) -> Void) {
+    func addParking(userID:String, buildingCode:String, parkingHours:Double, carPlateNumber:String, suitNumber:Int, address:String, lat:Double, long:Double, completion:@escaping (String?) -> Void) {
         
         self.parking.buildingCode = buildingCode
         self.parking.parkingHours = parkingHours
         self.parking.carPlateNumber = carPlateNumber
         self.parking.suitNumber = suitNumber
-        self.parking.locLat = lat
-        self.parking.locLong = long
+        self.parking.address = address
+        self.parking.coordinate.latitude = lat
+        self.parking.coordinate.longitude = long
         self.parking.addParking(userID: User.getInstance().id!, parking: self.parking){
             (error) in
             completion(error)
