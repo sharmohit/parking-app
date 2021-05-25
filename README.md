@@ -1,4 +1,4 @@
-# 🅿️arking App
+# i🅿️ark
 &nbsp;
 ## App Requirements
 Create an iOS application for the Parking App with the following functionalities:
@@ -47,9 +47,9 @@ location on map and display the route to the parking location from the current l
     <th>Home View UI</th>
   </tr>
   <tr>
-    <td><img src = "https://github.com/sharmohit/parking-app/blob/master/Images/01_ParkingApp_LoginUI.png" alt="Login UI" width="205" height="443"/></td>
-    <td><img src = "https://github.com/sharmohit/parking-app/blob/master/Images/02_ParkingApp_CreateAccountUI.png" alt="Create Account UI" width="205" height="443"/></td>
-    <td><img src = "https://github.com/sharmohit/parking-app/blob/master/Images/03_ParkingApp_HomeViewUI.png" alt="Home View UI" width="205" height="443"/></td>
+    <td><img src = "https://github.com/sharmohit/parking-app/blob/master/Images/01_iPark_LoginUI.png" alt="Login UI" width="205" height="443"/></td>
+    <td><img src = "https://github.com/sharmohit/parking-app/blob/master/Images/02_iPark_CreateAccountUI.png" alt="Create Account UI" width="205" height="443"/></td>
+    <td><img src = "https://github.com/sharmohit/parking-app/blob/master/Images/03_iPark_HomeViewUI.png" alt="Home View UI" width="205" height="443"/></td>
   </tr>
 </table>
 <table style="width:100%">
@@ -59,9 +59,9 @@ location on map and display the route to the parking location from the current l
     <th>Parking Detail UI</th>
   </tr>
   <tr>
-    <td><img src = "https://github.com/sharmohit/parking-app/blob/master/Images/04_ParkingApp_AddParkingUI.png" alt="Add Parking UI" width="205" height="443"/</td>
-    <td><img src = "https://github.com/sharmohit/parking-app/blob/master/Images/05_ParkingApp_UpdateProfileUI.png" alt="Update Profile UI" width="205" height="443"/></td>
-    <td><img src = "https://github.com/sharmohit/parking-app/blob/master/Images/06_ParkingApp_ParkingDetailUI.png" alt="Parking Detail UI" width="205" height="443"/></td>
+    <td><img src = "https://github.com/sharmohit/parking-app/blob/master/Images/04_iPark_AddParkingUI.png" alt="Add Parking UI" width="205" height="443"/</td>
+    <td><img src = "https://github.com/sharmohit/parking-app/blob/master/Images/05_iPark_UpdateProfileUI.png" alt="Update Profile UI" width="205" height="443"/></td>
+    <td><img src = "https://github.com/sharmohit/parking-app/blob/master/Images/06_iPark_ParkingDetailUI.png" alt="Parking Detail UI" width="205" height="443"/></td>
   </tr>
 </table>
 <table style="width:100%">
@@ -69,7 +69,7 @@ location on map and display the route to the parking location from the current l
     <th>Parking Map UI</th>
   </tr>
   <tr>
-    <td><img src = "https://github.com/sharmohit/parking-app/blob/master/Images/07_ParkingApp_ParkingMapUI.png" alt="Parking Map UI" width="205" height="443"/</td>
+    <td><img src = "https://github.com/sharmohit/parking-app/blob/master/Images/07_iPark_ParkingMapUI.png" alt="Parking Map UI" width="205" height="443"/</td>
   </tr>
 </table>
 
@@ -98,7 +98,7 @@ location on map and display the route to the parking location from the current l
   - [x] Design update profile screen
   - [x] Fetch user input
   - [x] Validate user input
-  - [x] update user profile with firestore
+  - [x] Update user profile with firestore
   - [x] Delete user profile
   - [x] Logout user profile
   
@@ -118,7 +118,7 @@ location on map and display the route to the parking location from the current l
   - [x] Create tabbed home screen
   - [x] Link navigation controller with view/add parking and profile screen, 
   - [x] Implement table view for view parking screen
-  - [x] fetch user parking from firestore
+  - [x] Fetch user parking from firestore
   - [x] Link home and parking detail view screens
 
 - [x] 8. Design Final UI with illustrations for all UI Screens @JavteshSinghBhullar(101348129)
