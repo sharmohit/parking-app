@@ -30,13 +30,10 @@ class AddParkingController {
         self.parking.streetAddress = address
         self.parking.coordinate.latitude = lat
         self.parking.coordinate.longitude = long
+        self.parking.dateTime = Timestamp()
         self.parking.addParking(userID: User.getInstance().id!, parking: self.parking){
             (error) in
             completion(error)
         }
-        /*
-        if let documentRef = self.parking.addParking(userID: User.getInstance().id!, parking: self.parking) {
-            self.parking.mapUserParking(userID: userID ,parkingID: documentRef.documentID)
-        }*/
     }
 }
