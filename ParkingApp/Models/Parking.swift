@@ -75,7 +75,7 @@ struct Parking : Codable {
     
     func addParking(userID:String, parking:Parking, completion: @escaping (String?) -> Void ){
         do {
-            try db.collection("users/\(userID)/parkings").addDocument(from : parking){
+            try self.db.collection("users/\(userID)/parkings").addDocument(from : parking){
                 (error) in
                 if let error = error {
                     completion("Unable to add parking. Please Try again. Error: \(error)")
@@ -89,7 +89,7 @@ struct Parking : Codable {
     }
     
     func getParkingByDocumentID(_ documentID:String, completion: @escaping (Parking) -> Void) {
-        db.collection("parkings").document(documentID).getDocument{
+        self.db.collection("parkings").document(documentID).getDocument{
             (queryResult, error) in
             
             if let error = error {
@@ -110,7 +110,7 @@ struct Parking : Codable {
     }
     
     func getUserParkings(userID:String, completion: @escaping ([Parking]?, String?) -> Void) {
-        db.collection("users/\(userID)/parkings").order(by: "date_time", descending: true).getDocuments(){
+        self.db.collection("users/\(userID)/parkings").order(by: "date_time", descending: true).getDocuments(){
             (queryResults, error) in
             
             if error != nil {
@@ -132,14 +132,4 @@ struct Parking : Codable {
             }
         }
     }
-    
-    /*
-     func mapUserParking(userID:String, parkingID:String) {
-     do {
-     try db.collection("users_parkings").addDocument(
-     data: ["email": userID, "parking_id": parkingID])
-     } catch {
-     print(error)
-     }
-     }*/
 }

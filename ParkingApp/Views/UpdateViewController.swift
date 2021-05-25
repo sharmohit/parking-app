@@ -180,6 +180,8 @@ class UpdateViewController: UIViewController {
         refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
               print("USER DLETITION : CONFIRMED")
             
+            self.deleteAllUserParking()
+            
             self.db.collection("users").document(User.getInstance().id!).delete{ (error) in
                 if error != nil {
                     print("There was an error while deleting the user info")
@@ -201,6 +203,25 @@ class UpdateViewController: UIViewController {
         }))
 
         present(refreshAlert, animated: true, completion: nil)
+    }
+    
+    func deleteAllUserParking() {
+        let viewParkingController = ViewParkingController()
+        viewParkingController.fetchUserParkings(userID: User.getInstance().id!){
+            (parkingList, error) in
+            if parkingList != nil {
+                for parking in parkingList! {
+                    self.db.collection("users/\(User.getInstance().id!)/parkings").document(parking.id!).delete{ (error) in
+                        if error != nil {
+                            print("There was an error while deleting the user parking")
+                        }
+                        else{
+                            print("parking Deleted")
+                        }
+                    }
+                }
+            }
+        }
     }
     
     func resetDefaults() {
