@@ -62,7 +62,7 @@ class ParkingTableViewController: UITableViewController {
         cell.carPlateLabel.text = parking.carPlateNumber.uppercased()
         cell.dateLabel.text = "Added on \(formatter.string(from: parking.dateTime.dateValue()))"
         cell.setParkingHour(hour:Int(parking.parkingHours))
-        cell.addressLabel.text = parking.address.isEmpty ? "Unavailable" : parking.address
+        cell.addressLabel.text = parking.streetAddress.isEmpty ? "Unavailable" : parking.streetAddress
         return cell
     }
     

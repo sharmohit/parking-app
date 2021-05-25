@@ -24,7 +24,7 @@ struct Parking : Codable {
     var parkingHours:Double
     var carPlateNumber:String
     var suitNumber:Int
-    var address:String
+    var streetAddress:String
     var coordinate:CLLocationCoordinate2D
     var dateTime:Timestamp
     
@@ -33,7 +33,7 @@ struct Parking : Codable {
         self.parkingHours = 0.0
         self.carPlateNumber = ""
         self.suitNumber = 0
-        self.address = ""
+        self.streetAddress = ""
         self.coordinate = CLLocationCoordinate2D()
         self.dateTime = Timestamp()
     }
@@ -44,7 +44,7 @@ struct Parking : Codable {
         case parkingHours = "parking_hours"
         case carPlateNumber = "car_plate_number"
         case suitNumber = "suit_number"
-        case address = "address"
+        case streetAddress = "street_address"
         case coordinate = "coordinate"
         case dateTime = "date_time"
     }
@@ -55,7 +55,7 @@ struct Parking : Codable {
         try container.encode(self.parkingHours, forKey: .parkingHours)
         try container.encode(self.carPlateNumber, forKey: .carPlateNumber)
         try container.encode(self.suitNumber, forKey: .suitNumber)
-        try container.encode(self.address, forKey: .address)
+        try container.encode(self.streetAddress, forKey: .streetAddress)
         try container.encode(GeoPoint.init(latitude: self.coordinate.latitude, longitude: self.coordinate.longitude), forKey: .coordinate)
         try container.encode(self.dateTime, forKey: .dateTime)
     }
@@ -67,7 +67,7 @@ struct Parking : Codable {
         self.parkingHours = try values.decode(Double.self, forKey: .parkingHours)
         self.carPlateNumber = try values.decode(String.self, forKey: .carPlateNumber)
         self.suitNumber = try values.decode(Int.self, forKey: .suitNumber)
-        self.address = try values.decode(String.self, forKey: .address)
+        self.streetAddress = try values.decode(String.self, forKey: .streetAddress)
         let geoPoint = try values.decode(GeoPoint.self, forKey: .coordinate)
         self.coordinate = CLLocationCoordinate2D(latitude: geoPoint.latitude, longitude: geoPoint.longitude)
         self.dateTime = try values.decode(Timestamp.self, forKey: .dateTime)
